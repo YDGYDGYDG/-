@@ -222,7 +222,7 @@
         <!--음식점 정보-->
         <scene sceneID="Hoj-Jm-4yT">
             <objects>
-                <tableViewController title="음식점 정보" id="GqF-Bd-LWf" sceneMemberID="viewController">
+                <tableViewController title="음식점 정보" id="GqF-Bd-LWf" customClass="R_InformationTableViewController" customModule="TermProject" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="OqB-PK-dG3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -282,7 +282,7 @@
         <!--Map View Controller-->
         <scene sceneID="IB0-nj-Ihy">
             <objects>
-                <viewController id="Xnu-59-LgW" customClass="MapViewController" customModule="TermProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Xnu-59-LgW" customClass="R_MapViewController" customModule="TermProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qgu-5C-HYe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

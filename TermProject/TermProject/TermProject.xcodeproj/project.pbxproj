@@ -15,6 +15,7 @@
 		A1A73100229E8DB9009A433E /* R_InformationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A730FF229E8DB9009A433E /* R_InformationTableViewController.swift */; };
 		A1A73102229E8E95009A433E /* R_MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A73101229E8E95009A433E /* R_MapViewController.swift */; };
 		A1A73104229E8F57009A433E /* Restorant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A73103229E8F57009A433E /* Restorant.swift */; };
+		A1A73106229EF4E9009A433E /* Region_SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A73105229EF4E9009A433E /* Region_SearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		A1A730FF229E8DB9009A433E /* R_InformationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R_InformationTableViewController.swift; sourceTree = "<group>"; };
 		A1A73101229E8E95009A433E /* R_MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R_MapViewController.swift; sourceTree = "<group>"; };
 		A1A73103229E8F57009A433E /* Restorant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restorant.swift; sourceTree = "<group>"; };
+		A1A73105229EF4E9009A433E /* Region_SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Region_SearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				A1929A01228D344700C6734D /* AppDelegate.swift */,
 				A1929A03228D344700C6734D /* ViewController.swift */,
 				A1929A05228D344700C6734D /* Main.storyboard */,
+				A1A73105229EF4E9009A433E /* Region_SearchViewController.swift */,
 				A1929A08228D344800C6734D /* Assets.xcassets */,
 				A1929A0A228D344800C6734D /* LaunchScreen.storyboard */,
 				A1929A0D228D344800C6734D /* Info.plist */,
@@ -144,6 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1A73106229EF4E9009A433E /* Region_SearchViewController.swift in Sources */,
 				A1929A04228D344700C6734D /* ViewController.swift in Sources */,
 				A1A73100229E8DB9009A433E /* R_InformationTableViewController.swift in Sources */,
 				A1A73102229E8E95009A433E /* R_MapViewController.swift in Sources */,

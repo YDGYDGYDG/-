@@ -144,7 +144,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fBS-Xp-6yB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6183" y="-2130"/>
+            <point key="canvasLocation" x="6198" y="-2125"/>
         </scene>
         <!--북마크-->
         <scene sceneID="1B5-xm-RHa">
@@ -204,26 +204,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PuK-ZU-t55">
-                                <rect key="frame" x="140" y="168" width="95" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PuK-ZU-t55">
+                                <rect key="frame" x="140" y="268.5" width="95" height="30"/>
                                 <state key="normal" title="지역명으로 검색"/>
                                 <connections>
                                     <segue destination="35A-Ah-Sic" kind="show" id="7r4-iQ-4Rd"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jmi-in-VlF">
-                                <rect key="frame" x="146" y="318" width="82" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jmi-in-VlF">
+                                <rect key="frame" x="146.5" y="318.5" width="82" height="30"/>
                                 <state key="normal" title="업종으로 검색"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DOf-tV-aTd">
-                                <rect key="frame" x="140" y="453" width="95" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DOf-tV-aTd">
+                                <rect key="frame" x="140" y="368.5" width="95" height="30"/>
                                 <state key="normal" title="상호명으로 검색"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="jmi-in-VlF" firstAttribute="centerY" secondItem="dX3-U1-O7s" secondAttribute="centerY" id="CnY-Ag-XA5"/>
+                            <constraint firstItem="PuK-ZU-t55" firstAttribute="centerX" secondItem="dX3-U1-O7s" secondAttribute="centerX" id="FYy-gv-FEF"/>
+                            <constraint firstItem="DOf-tV-aTd" firstAttribute="centerX" secondItem="dX3-U1-O7s" secondAttribute="centerX" id="d8y-LZ-udF"/>
+                            <constraint firstItem="DOf-tV-aTd" firstAttribute="centerY" secondItem="dX3-U1-O7s" secondAttribute="centerY" constant="50" id="umC-g5-NUn"/>
+                            <constraint firstItem="PuK-ZU-t55" firstAttribute="centerY" secondItem="dX3-U1-O7s" secondAttribute="centerY" constant="-50" id="yOe-QS-met"/>
+                            <constraint firstItem="jmi-in-VlF" firstAttribute="centerX" secondItem="dX3-U1-O7s" secondAttribute="centerX" id="z1S-fn-F57"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="iZj-dU-qO1"/>
                     </view>
                     <navigationItem key="navigationItem" id="AFZ-sj-FkA"/>

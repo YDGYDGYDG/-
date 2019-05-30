@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A11F8986229FA74500622555 /* mblogthumb1.phinf.naver.net.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = A11F8985229FA74500622555 /* mblogthumb1.phinf.naver.net.jpeg */; };
 		A1929A02228D344700C6734D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1929A01228D344700C6734D /* AppDelegate.swift */; };
 		A1929A04228D344700C6734D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1929A03228D344700C6734D /* ViewController.swift */; };
 		A1929A07228D344700C6734D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1929A05228D344700C6734D /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A11F8985229FA74500622555 /* mblogthumb1.phinf.naver.net.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mblogthumb1.phinf.naver.net.jpeg; sourceTree = "<group>"; };
 		A19299FE228D344700C6734D /* TermProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TermProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1929A01228D344700C6734D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A1929A03228D344700C6734D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 		A1929A00228D344700C6734D /* TermProject */ = {
 			isa = PBXGroup;
 			children = (
+				A11F8985229FA74500622555 /* mblogthumb1.phinf.naver.net.jpeg */,
 				A1929A01228D344700C6734D /* AppDelegate.swift */,
 				A1929A03228D344700C6734D /* ViewController.swift */,
 				A1929A05228D344700C6734D /* Main.storyboard */,
@@ -134,6 +137,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A11F8986229FA74500622555 /* mblogthumb1.phinf.naver.net.jpeg in Resources */,
 				A1929A0C228D344800C6734D /* LaunchScreen.storyboard in Resources */,
 				A1929A09228D344800C6734D /* Assets.xcassets in Resources */,
 				A1929A07228D344700C6734D /* Main.storyboard in Resources */,

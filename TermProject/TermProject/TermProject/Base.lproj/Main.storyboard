@@ -240,18 +240,16 @@
         <!--View Controller-->
         <scene sceneID="S30-Hy-4XW">
             <objects>
-                <viewController id="mRP-qW-hxG" sceneMemberID="viewController">
+                <viewController id="mRP-qW-hxG" customClass="ViewController" customModule="TermProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cWN-zR-rmK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L9B-hL-GpC">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L9B-hL-GpC">
                                 <rect key="frame" x="16" y="48" width="343" height="368"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jyn-d5-ult">
-                                <rect key="frame" x="172" y="466" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jyn-d5-ult">
+                                <rect key="frame" x="172.5" y="468.5" width="30" height="30"/>
                                 <state key="normal" title="시작"/>
                                 <connections>
                                     <segue destination="b05-Yp-WY1" kind="show" id="5E7-xo-bZM"/>
@@ -259,8 +257,17 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="jyn-d5-ult" firstAttribute="centerY" secondItem="cWN-zR-rmK" secondAttribute="centerY" constant="150" id="D1t-TT-7w9"/>
+                            <constraint firstItem="L9B-hL-GpC" firstAttribute="centerY" secondItem="cWN-zR-rmK" secondAttribute="centerY" constant="-50" id="gxf-8D-uVa"/>
+                            <constraint firstItem="L9B-hL-GpC" firstAttribute="centerX" secondItem="cWN-zR-rmK" secondAttribute="centerX" id="l44-cP-9DU"/>
+                            <constraint firstItem="jyn-d5-ult" firstAttribute="centerX" secondItem="cWN-zR-rmK" secondAttribute="centerX" id="zez-Q3-wb7"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="5qj-gh-WxE"/>
                     </view>
+                    <connections>
+                        <outlet property="TileImage" destination="L9B-hL-GpC" id="NCe-kg-Z5p"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1pB-1d-pFc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

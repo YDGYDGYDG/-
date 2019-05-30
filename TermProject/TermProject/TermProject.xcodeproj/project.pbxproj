@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A11F8986229FA74500622555 /* mblogthumb1.phinf.naver.net.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = A11F8985229FA74500622555 /* mblogthumb1.phinf.naver.net.jpeg */; };
+		A11F8989229FA9B400622555 /* 51-514236_white-magnifying-glass-png-search-magnifying-glass-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A11F898B229FA9B400622555 /* 51-514236_white-magnifying-glass-png-search-magnifying-glass-icon.png */; };
 		A1929A02228D344700C6734D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1929A01228D344700C6734D /* AppDelegate.swift */; };
 		A1929A04228D344700C6734D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1929A03228D344700C6734D /* ViewController.swift */; };
 		A1929A07228D344700C6734D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1929A05228D344700C6734D /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		A11F8985229FA74500622555 /* mblogthumb1.phinf.naver.net.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mblogthumb1.phinf.naver.net.jpeg; sourceTree = "<group>"; };
+		A11F898A229FA9B400622555 /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = "Base.lproj/51-514236_white-magnifying-glass-png-search-magnifying-glass-icon.png"; sourceTree = "<group>"; };
 		A19299FE228D344700C6734D /* TermProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TermProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1929A01228D344700C6734D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A1929A03228D344700C6734D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				A11F8985229FA74500622555 /* mblogthumb1.phinf.naver.net.jpeg */,
+				A11F898B229FA9B400622555 /* 51-514236_white-magnifying-glass-png-search-magnifying-glass-icon.png */,
 				A1929A01228D344700C6734D /* AppDelegate.swift */,
 				A1929A03228D344700C6734D /* ViewController.swift */,
 				A1929A05228D344700C6734D /* Main.storyboard */,
@@ -141,6 +144,7 @@
 				A1929A0C228D344800C6734D /* LaunchScreen.storyboard in Resources */,
 				A1929A09228D344800C6734D /* Assets.xcassets in Resources */,
 				A1929A07228D344700C6734D /* Main.storyboard in Resources */,
+				A11F8989229FA9B400622555 /* 51-514236_white-magnifying-glass-png-search-magnifying-glass-icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,6 +167,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		A11F898B229FA9B400622555 /* 51-514236_white-magnifying-glass-png-search-magnifying-glass-icon.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A11F898A229FA9B400622555 /* Base */,
+			);
+			name = "51-514236_white-magnifying-glass-png-search-magnifying-glass-icon.png";
+			sourceTree = "<group>";
+		};
 		A1929A05228D344700C6734D /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

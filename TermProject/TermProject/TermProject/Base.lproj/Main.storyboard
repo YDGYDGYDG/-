@@ -281,6 +281,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="1" green="0.1748579502" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="mY0-fQ-Mbo" kind="relationship" relationship="viewControllers" id="GEh-T3-dZM"/>
@@ -403,7 +404,7 @@
         <scene sceneID="ffI-RL-Ort">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mY0-fQ-Mbo" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="검색" id="1e9-bi-91O"/>
+                    <tabBarItem key="tabBarItem" title="검색" image="51-514236_white-magnifying-glass-png-search-magnifying-glass-icon.png" id="1e9-bi-91O"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="yhi-ou-7bS">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -419,4 +420,7 @@
             <point key="canvasLocation" x="-1511.2" y="-2125.1874062968518"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="51-514236_white-magnifying-glass-png-search-magnifying-glass-icon.png" width="600" height="598"/>
+    </resources>
 </document>

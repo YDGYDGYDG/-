@@ -17,7 +17,7 @@ class Region_SearchViewController: UIViewController, UIPickerViewDelegate, UIPic
     }
     
     var pickerDataSource = ["광진구", "구로구", "동대문구", "종로구"]
-    var url : String = "http://apis.data.go.kr/B551182/hospInfoService/getHospBasisList?pageNo=1&numOfRows=10&serviceKey=sea100UMmw23Xycs33F1EQnumONR%2F9ElxBLzkilU9Yr1oT4TrCot8Y2p0jyuJP72x9rG9D8CN5yuEs6AS2sAiw%3D%3D&sidoCd=110000&sgguCd="
+    var url : String = "https://openapi.gg.go.kr/Genrestrtcate"
     var sgguCd: String = "110023"
     
     

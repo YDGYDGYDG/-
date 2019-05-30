@@ -108,7 +108,7 @@ class R_InformationTableViewController: UITableViewController, XMLParserDelegate
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueToMapView"{
-            if let mapViewController = segue.destination as? MapViewController{
+            if let mapViewController = segue.destination as? R_MapViewController{
                 mapViewController.posts = posts
             }
         }

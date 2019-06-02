@@ -19,6 +19,7 @@
 		A1A73102229E8E95009A433E /* R_MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A73101229E8E95009A433E /* R_MapViewController.swift */; };
 		A1A73104229E8F57009A433E /* Restorant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A73103229E8F57009A433E /* Restorant.swift */; };
 		A1A73106229EF4E9009A433E /* Region_SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A73105229EF4E9009A433E /* Region_SearchViewController.swift */; };
+		A1DCAB7F22A44B8B001D8B33 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = A1DCAB7D22A44B8B001D8B33 /* star.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		A1A73101229E8E95009A433E /* R_MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R_MapViewController.swift; sourceTree = "<group>"; };
 		A1A73103229E8F57009A433E /* Restorant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restorant.swift; sourceTree = "<group>"; };
 		A1A73105229EF4E9009A433E /* Region_SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Region_SearchViewController.swift; sourceTree = "<group>"; };
+		A1DCAB7E22A44B8B001D8B33 /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = Base.lproj/star.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 			children = (
 				A11F8985229FA74500622555 /* mblogthumb1.phinf.naver.net.jpeg */,
 				A11F898B229FA9B400622555 /* 51-514236_white-magnifying-glass-png-search-magnifying-glass-icon.png */,
+				A1DCAB7D22A44B8B001D8B33 /* star.png */,
 				A1929A01228D344700C6734D /* AppDelegate.swift */,
 				A1929A03228D344700C6734D /* ViewController.swift */,
 				A1929A05228D344700C6734D /* Main.storyboard */,
@@ -148,6 +151,7 @@
 				A1929A09228D344800C6734D /* Assets.xcassets in Resources */,
 				A1929A07228D344700C6734D /* Main.storyboard in Resources */,
 				A11F8989229FA9B400622555 /* 51-514236_white-magnifying-glass-png-search-magnifying-glass-icon.png in Resources */,
+				A1DCAB7F22A44B8B001D8B33 /* star.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,6 +197,14 @@
 				A1929A0B228D344800C6734D /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		A1DCAB7D22A44B8B001D8B33 /* star.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A1DCAB7E22A44B8B001D8B33 /* Base */,
+			);
+			name = star.png;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -133,7 +133,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r2N-md-HMu" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="ZnI-Sc-Q4h" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5122" y="-2479"/>
+            <point key="canvasLocation" x="5134" y="-2124"/>
         </scene>
         <!--음식점 지도 위치-->
         <scene sceneID="IB0-nj-Ihy">
@@ -157,7 +157,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fBS-Xp-6yB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6023" y="-1699"/>
+            <point key="canvasLocation" x="4215" y="-1212"/>
         </scene>
         <!--북마크-->
         <scene sceneID="1B5-xm-RHa">
@@ -405,7 +405,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lqf-il-LKI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4426" y="-2479"/>
+            <point key="canvasLocation" x="4438" y="-2125"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Xk0-hI-RXo">
@@ -429,7 +429,7 @@
         <scene sceneID="JiD-1A-4Bb">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ucp-9s-shl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="북마크" id="fnl-Nl-IND"/>
+                    <tabBarItem key="tabBarItem" title="북마크" image="star.png" id="fnl-Nl-IND"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="o9r-fM-CAt">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -465,7 +465,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="51-514236_white-magnifying-glass-png-search-magnifying-glass-icon.png" width="45" height="45"/>
+        <image name="51-514236_white-magnifying-glass-png-search-magnifying-glass-icon.png" width="27" height="27"/>
+        <image name="star.png" width="27" height="27"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="rbX-et-B7B"/>

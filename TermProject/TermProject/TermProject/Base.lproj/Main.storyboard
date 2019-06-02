@@ -313,16 +313,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vJs-jC-QxA">
-                                <rect key="frame" x="0.0" y="225" width="375" height="216"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vJs-jC-QxA">
+                                <rect key="frame" x="27.5" y="25.5" width="320" height="216"/>
                                 <connections>
                                     <outlet property="dataSource" destination="ZSZ-fJ-2tk" id="Uyy-fo-ap4"/>
                                     <outlet property="delegate" destination="ZSZ-fJ-2tk" id="tuW-H4-8mp"/>
                                 </connections>
                             </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RHU-1M-YMd">
+                                <rect key="frame" x="46.5" y="318.5" width="82" height="30"/>
+                                <state key="normal" title="음성인식 시작"/>
+                                <connections>
+                                    <action selector="startTranscribing:" destination="gP4-dh-b46" eventType="touchUpInside" id="tYi-7T-U3m"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GVm-ei-haM">
+                                <rect key="frame" x="246.5" y="318.5" width="82" height="30"/>
+                                <state key="normal" title="음성인식 종료"/>
+                                <connections>
+                                    <action selector="stopTranscribing:" destination="gP4-dh-b46" eventType="touchUpInside" id="xkM-pI-uVW"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="wc5-gT-HNv">
+                                <rect key="frame" x="88" y="490" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.93286512305699487" green="0.93286512305699487" blue="0.93286512305699487" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="vJs-jC-QxA" firstAttribute="centerX" secondItem="ZSZ-fJ-2tk" secondAttribute="centerX" id="5d5-1F-XyM"/>
+                            <constraint firstItem="RHU-1M-YMd" firstAttribute="centerX" secondItem="ZSZ-fJ-2tk" secondAttribute="centerX" constant="-100" id="JJa-fn-lHk"/>
+                            <constraint firstItem="RHU-1M-YMd" firstAttribute="centerY" secondItem="ZSZ-fJ-2tk" secondAttribute="centerY" id="MBJ-mF-hsM"/>
+                            <constraint firstItem="GVm-ei-haM" firstAttribute="centerY" secondItem="ZSZ-fJ-2tk" secondAttribute="centerY" id="SiU-Um-5J8"/>
+                            <constraint firstItem="GVm-ei-haM" firstAttribute="centerX" secondItem="ZSZ-fJ-2tk" secondAttribute="centerX" constant="100" id="kM0-Tq-PRU"/>
+                            <constraint firstItem="vJs-jC-QxA" firstAttribute="centerY" secondItem="ZSZ-fJ-2tk" secondAttribute="centerY" constant="-200" id="m2t-xx-dwn"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="cnf-2w-fYu"/>
                     </view>
                     <navigationItem key="navigationItem" title="지역별 검색" id="9qO-qp-r8F">
@@ -333,7 +361,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="myTextView" destination="wc5-gT-HNv" id="cNv-L7-ZPy"/>
                         <outlet property="pickerView" destination="vJs-jC-QxA" id="MdN-R7-Qpn"/>
+                        <outlet property="stopButton" destination="GVm-ei-haM" id="fbD-Mz-Yln"/>
+                        <outlet property="transcribeButton" destination="RHU-1M-YMd" id="pJ7-lI-P49"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R8v-K1-XTM" sceneMemberID="firstResponder"/>

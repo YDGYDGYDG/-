@@ -111,16 +111,16 @@ class R_ListTableViewController: UITableViewController, XMLParserDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueToRestorantInformation"{
-            if let cell = sender as? UITableViewCell{
-                let indexPath = tableView.indexPath(for: cell)
+            //if let cell = sender as? UITableViewCell{
+                //let indexPath = tableView.indexPath(for: cell)
                 
-                restorantname = (posts.object(at: (indexPath?.row)!)as AnyObject).value(forKey: "BIZPLC_NM") as! NSString as String
-                restorantname_utf8 = restorantname.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+                //restorantname = (posts.object(at: (indexPath?.row)!)as AnyObject).value(forKey: "BIZPLC_NM") as! NSString as String
+                //restorantname_utf8 = restorantname.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
                 
                 if let informationTableViewController = segue.destination as? R_InformationTableViewController{
-                    informationTableViewController.url = url! + "&BIZPLC_NM=" + restorantname_utf8
+                    informationTableViewController.url = url
                 }
-            }
+            //}
         }
         
         if segue.identifier == "segueToMapView"{

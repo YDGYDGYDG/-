@@ -1,8 +1,176 @@
 
 
 import UIKit
+import Speech
 
 class Region_SearchViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+    @IBOutlet weak var transcribeButton: UIButton!
+    @IBOutlet weak var stopButton: UIButton!
+    @IBOutlet weak var myTextView: UITextView!
+    
+    //private let speechRecognizer = SFSpeechRecognizer()!
+    private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "ko-KR"))!
+    
+    private var speechRecognitionRequest: SFSpeechAudioBufferRecognitionRequest?
+    private var speechRecognitionTask: SFSpeechRecognitionTask?
+    
+    private let audioEngine = AVAudioEngine()
+    
+    @IBAction func startTranscribing(_ sender: Any){
+        transcribeButton.isEnabled = false
+        stopButton.isEnabled = true
+        try! startSession()
+        
+    }
+    
+    func startSession() throws {
+        if let recognitionTask = speechRecognitionTask{
+            recognitionTask.cancel()
+            self.speechRecognitionTask = nil
+        }
+        
+        let audioSession = AVAudioSession.sharedInstance()
+        try audioSession.setCategory(AVAudioSession.Category.playAndRecord, mode: AVAudioSession.Mode.default, options: AVAudioSession.CategoryOptions.allowAirPlay)
+        
+        speechRecognitionRequest = SFSpeechAudioBufferRecognitionRequest()
+        
+        guard let recognitionRequest = speechRecognitionRequest else {
+            fatalError("SFSpeechAudioBufferRecognitionRequest object creation failed")
+        }
+        
+        let inputNode = audioEngine.inputNode
+        recognitionRequest.shouldReportPartialResults = true
+        
+        speechRecognitionTask = speechRecognizer.recognitionTask(with: recognitionRequest){ result, error in
+            var finished = false
+            
+            if let result = result{
+                self.myTextView.text = result.bestTranscription.formattedString
+                finished = result.isFinal
+            }
+            
+            if error != nil || finished {
+                self.audioEngine.stop()
+                inputNode.removeTap(onBus: 0)
+                
+                self.speechRecognitionRequest = nil
+                self.speechRecognitionTask = nil
+                
+                self.transcribeButton.isEnabled = true
+            }
+        }
+        
+        let recordingFormat = inputNode.outputFormat(forBus: 0)
+        inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat){ (buffer: AVAudioPCMBuffer, when: AVAudioTime) in
+            
+            self.speechRecognitionRequest?.append(buffer)
+        }
+        audioEngine.prepare()
+        try audioEngine.start()
+        
+    }
+    
+    @IBAction func stopTranscribing(_ sender: Any){
+        if audioEngine.isRunning{
+            audioEngine.stop()
+            speechRecognitionRequest?.endAudio()
+            stopButton.isEnabled = false
+            transcribeButton.isEnabled = true
+        }
+        
+        switch(self.myTextView.text){
+        case "가평군": self.pickerView.selectRow(0, inComponent: 0, animated: true)
+            break
+        case "과천시": self.pickerView.selectRow(1, inComponent: 0, animated: true)
+            break
+        case "광명시": self.pickerView.selectRow(2, inComponent: 0, animated: true)
+            break
+        case "광주시": self.pickerView.selectRow(3, inComponent: 0, animated: true)
+            break
+        case "고양시": self.pickerView.selectRow(4, inComponent: 0, animated: true)
+            break
+        case "구리시": self.pickerView.selectRow(5, inComponent: 0, animated: true)
+            break
+        case "군포시": self.pickerView.selectRow(6, inComponent: 0, animated: true)
+            break
+        case "김포시": self.pickerView.selectRow(7, inComponent: 0, animated: true)
+            break
+        case "남양주시": self.pickerView.selectRow(8, inComponent: 0, animated: true)
+            break
+        case "동두천시": self.pickerView.selectRow(9, inComponent: 0, animated: true)
+            break
+        case "부천시": self.pickerView.selectRow(10, inComponent: 0, animated: true)
+            break
+        case "성남시": self.pickerView.selectRow(11, inComponent: 0, animated: true)
+            break
+        case "수원시": self.pickerView.selectRow(12, inComponent: 0, animated: true)
+            break
+        case "시흥시": self.pickerView.selectRow(13, inComponent: 0, animated: true)
+            break
+        case "안산시": self.pickerView.selectRow(14, inComponent: 0, animated: true)
+            break
+        case "안성시": self.pickerView.selectRow(15, inComponent: 0, animated: true)
+            break
+        case "안양시": self.pickerView.selectRow(16, inComponent: 0, animated: true)
+            break
+        case "양주시": self.pickerView.selectRow(17, inComponent: 0, animated: true)
+            break
+        case "양평군": self.pickerView.selectRow(18, inComponent: 0, animated: true)
+            break
+        case "여주군": self.pickerView.selectRow(19, inComponent: 0, animated: true)
+            break
+        case "연천군": self.pickerView.selectRow(20, inComponent: 0, animated: true)
+            break
+        case "오산시": self.pickerView.selectRow(21, inComponent: 0, animated: true)
+            break
+        case "용인시": self.pickerView.selectRow(22, inComponent: 0, animated: true)
+            break
+        case "의왕군": self.pickerView.selectRow(23, inComponent: 0, animated: true)
+            break
+        case "의정부시": self.pickerView.selectRow(24, inComponent: 0, animated: true)
+            break
+        case "이천시": self.pickerView.selectRow(25, inComponent: 0, animated: true)
+            break
+        case "파주시": self.pickerView.selectRow(26, inComponent: 0, animated: true)
+            break
+        case "평택시": self.pickerView.selectRow(27, inComponent: 0, animated: true)
+            break
+        case "포천시": self.pickerView.selectRow(28, inComponent: 0, animated: true)
+            break
+        case "하남시": self.pickerView.selectRow(29, inComponent: 0, animated: true)
+            break
+        case "화성시": self.pickerView.selectRow(30, inComponent: 0, animated: true)
+            break
+        default: break
+        }
+    }
+    
+    func authorizeSR() {
+        SFSpeechRecognizer.requestAuthorization {authStatus in
+            
+            OperationQueue.main.addOperation{
+                switch authStatus {
+                case .authorized:
+                    self.transcribeButton.isEnabled = true
+                    
+                case .denied:
+                    self.transcribeButton.isEnabled = false
+                    self.transcribeButton.setTitle("Speech recognition access denied by user.", for: .disabled)
+                    
+                case .restricted:
+                    self.transcribeButton.isEnabled = false
+                    self.transcribeButton.setTitle("Speech recognition restricted on device", for: .disabled)
+                    
+                case .notDetermined:
+                    self.transcribeButton.isEnabled = false
+                    self.transcribeButton.setTitle("Speech recognition not authorized", for: .disabled)
+                }
+            }
+            
+        }
+    }
+    
+    //========================================================================
     
     @IBOutlet weak var pickerView: UIPickerView!
     
@@ -173,7 +341,8 @@ class Region_SearchViewController: UIViewController, UIPickerViewDelegate, UIPic
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        authorizeSR()
+
         self.pickerView.delegate = self;
         self.pickerView.dataSource = self;
         

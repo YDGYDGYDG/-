@@ -19,14 +19,14 @@ class R_MapViewController: UIViewController, MKMapViewDelegate {
     
     func loadInitialData(){
         for post in posts{
-            let yadmNm = (post as AnyObject).value(forKey: "yadmNm") as! NSString as String
-            let addr = (post as AnyObject).value(forKey: "addr") as! NSString as String
-            let XPos = (post as AnyObject).value(forKey: "XPos") as! NSString as String
-            let YPos = (post as AnyObject).value(forKey: "YPos") as! NSString as String
+            let sigunNm = (post as AnyObject).value(forKey: "SIGUN_NM") as! NSString as String
+            let addr = (post as AnyObject).value(forKey: "REFINE_LOTNO_ADDR") as! NSString as String
+            let XPos = (post as AnyObject).value(forKey: "REFINE_WGS84_LOGT") as! NSString as String
+            let YPos = (post as AnyObject).value(forKey: "REFINE_WGS84_LAT") as! NSString as String
             let lon = (XPos as NSString).doubleValue
             let lat = (YPos as NSString).doubleValue
-            let hospital = Restorant(title: yadmNm, locationName: addr, coordinate: CLLocationCoordinate2D(latitude: lat, longitude: lon))
-            restorants.append(hospital)
+            let restorant = Restorant(title: sigunNm, locationName: addr, coordinate: CLLocationCoordinate2D(latitude: lat, longitude: lon))
+            restorants.append(restorant)
         }
     }
     

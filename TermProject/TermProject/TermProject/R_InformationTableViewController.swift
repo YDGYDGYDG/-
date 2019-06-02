@@ -1,91 +1,119 @@
+//
+//  R_InformationTableViewController.swift
+//  TermProject
+//
+//  Created by kpugame on 2019. 5. 30..
+//  Copyright © 2019년 YDK. All rights reserved.
+//
 
 import UIKit
 
 class R_InformationTableViewController: UITableViewController, XMLParserDelegate {
-
-    @IBOutlet var tbData: UITableView!
+    
+    @IBOutlet var detailTableView: UITableView!
     
     var url: String?
-    
     var parser = XMLParser()
     
-    var posts = NSMutableArray()
+    let postsname : [String] = ["업소명", "업종", "주소(지번)", "주소(도로명)", "개업일", "운영 여부"]
+    var posts : [String] = ["","","","","",""]
     
-    var elements = NSMutableDictionary()
+    var position = NSMutableArray()
+    
     var element = NSString()
     
     var yadmNm = NSMutableString()
     var addr = NSMutableString()
+    var telno = NSMutableString()
+    var hospUrl = NSMutableString()
+    var clCdNm = NSMutableString()
+    var estbDd = NSMutableString()
     
-    var XPos = NSMutableString()
-    var YPos = NSMutableString()
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        beginParsing()
-    }
     
     func beginParsing(){
         posts = []
         parser = XMLParser(contentsOf: (URL(string: url!))!)!
         parser.delegate = self
         parser.parse()
-        tbData!.reloadData()
-        
+        detailTableView!.reloadData()
     }
     
-    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String])
-    {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        beginParsing()
+    }
+    
+    
+    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
+        
         element = elementName as NSString
-        // 파싱한 주소의 XML소스에서 item이라고 명명된 내용을 찾는 것
-        if (elementName as NSString).isEqual(to: "item"){
-            elements = NSMutableDictionary()
-            elements = [:]
+        if(elementName as NSString).isEqual(to: "item"){
+            posts = ["","","","","",""]
+            
             yadmNm = NSMutableString()
             yadmNm = ""
             addr = NSMutableString()
             addr = ""
-            XPos = NSMutableString()
-            XPos = ""
-            YPos = NSMutableString()
-            YPos = ""
+            telno = NSMutableString()
+            telno = ""
+            hospUrl = NSMutableString()
+            hospUrl = ""
+            clCdNm = NSMutableString()
+            clCdNm = ""
+            estbDd = NSMutableString()
+            estbDd = ""
+            
         }
     }
     
     func parser(_ parser: XMLParser, foundCharacters string: String) {
-        if element.isEqual(to: "yadmNm"){
+        if element.isEqual(to: "BIZPLC_NM"){
             yadmNm.append(string)
         }
-        else if element.isEqual(to: "addr"){
+        else if element.isEqual(to: "SANITTN_BIZCOND_NM"){
             addr.append(string)
-        }
             
-        else if element.isEqual(to: "XPos"){
-            XPos.append(string)
         }
-        else if element.isEqual(to: "YPos"){
-            YPos.append(string)
+        else if element.isEqual(to: "REFINE_LOTNO_ADDR"){
+            telno.append(string)
+            
         }
+        else if element.isEqual(to: "REFINE_ROADNM_ADDR"){
+            hospUrl.append(string)
+            
+        }
+        else if element.isEqual(to: "LICENSG_DE"){
+            clCdNm.append(string)
+            
+        }
+        else if element.isEqual(to: "BSN_STATE_NM"){
+            estbDd.append(string)
+            
+        }
+        
     }
     
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         if (elementName as NSString).isEqual(to: "item"){
             if !yadmNm.isEqual(nil){
-                elements.setObject(yadmNm, forKey: "yadmNm" as NSCopying)
+                posts[0] = yadmNm as String
             }
-            
             if !addr.isEqual(nil){
-                elements.setObject(addr, forKey: "addr" as NSCopying)
+                posts[1] = addr as String
             }
-            
-            if !XPos.isEqual(nil){
-                elements.setObject(XPos, forKey: "XPos" as NSCopying)
+            if !telno.isEqual(nil){
+                posts[2] = telno as String
             }
-            if !YPos.isEqual(nil){
-                elements.setObject(YPos, forKey: "YPos" as NSCopying)
+            if !hospUrl.isEqual(nil){
+                posts[3] = hospUrl as String
             }
-            posts.add(elements)
+            if !clCdNm.isEqual(nil){
+                posts[4] = clCdNm as String
+            }
+            if !estbDd.isEqual(nil){
+                posts[5] = estbDd as String
+            }
         }
     }
     
@@ -93,14 +121,11 @@ class R_InformationTableViewController: UITableViewController, XMLParserDelegate
         return posts.count
     }
     
-    override func tableView(_ tableView:UITableView, cellForRowAt indexPath: IndexPath)->UITableViewCell
-    {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        
-        cell.textLabel?.text = (posts.object(at: indexPath.row) as AnyObject).value(forKey: "yadmNm")
-            as! NSString as String
-        cell.detailTextLabel?.text = (posts.object(at: indexPath.row) as AnyObject).value(forKey: "addr")
-            as! NSString as String
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RestorantCell", for: indexPath)
+        cell.textLabel?.text = postsname[indexPath.row]
+        cell.detailTextLabel?.text = posts[indexPath.row]
         
         return cell
     }
@@ -109,9 +134,8 @@ class R_InformationTableViewController: UITableViewController, XMLParserDelegate
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueToMapView"{
             if let mapViewController = segue.destination as? R_MapViewController{
-                mapViewController.posts = posts
+                mapViewController.posts = position
             }
         }
     }
-    
 }

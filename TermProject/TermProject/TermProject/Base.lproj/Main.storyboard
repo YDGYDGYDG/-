@@ -13,7 +13,7 @@
         <!--음식점 목록-->
         <scene sceneID="H8E-R0-A5v">
             <objects>
-                <tableViewController title="음식점 목록" id="v8Q-Xf-AF5" sceneMemberID="viewController">
+                <tableViewController title="음식점 목록" id="v8Q-Xf-AF5" customClass="R_ListTableViewController" customModule="TermProject" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="c47-K3-Tfw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -21,7 +21,7 @@
                         <sections>
                             <tableViewSection headerTitle="Section-1" id="Gnk-rt-IcS">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="Dzh-FV-QpX" detailTextLabel="Fzh-RI-nhU" style="IBUITableViewCellStyleSubtitle" id="1J0-oT-0Cq">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="Dzh-FV-QpX" detailTextLabel="Fzh-RI-nhU" style="IBUITableViewCellStyleSubtitle" id="1J0-oT-0Cq">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1J0-oT-0Cq" id="tZf-mz-Tca">
@@ -52,11 +52,14 @@
                             </tableViewSection>
                         </sections>
                         <connections>
-                            <outlet property="dataSource" destination="v8Q-Xf-AF5" id="p5i-yj-2dX"/>
-                            <outlet property="delegate" destination="v8Q-Xf-AF5" id="AWS-D2-r3F"/>
+                            <outlet property="dataSource" destination="v8Q-Xf-AF5" id="aKp-iC-dsk"/>
+                            <outlet property="delegate" destination="v8Q-Xf-AF5" id="ocP-yZ-Nry"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="J7a-fh-SkK"/>
+                    <connections>
+                        <outlet property="tbData" destination="c47-K3-Tfw" id="wTt-f5-izr"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iVO-T0-Vyv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -73,7 +76,7 @@
                         <sections>
                             <tableViewSection headerTitle="Section-1" id="9k2-Ib-Xmc">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="U8A-yw-gwI" detailTextLabel="FRN-2X-Sgu" style="IBUITableViewCellStyleSubtitle" id="6o8-h6-9QX">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RestorantCell" textLabel="U8A-yw-gwI" detailTextLabel="FRN-2X-Sgu" style="IBUITableViewCellStyleSubtitle" id="6o8-h6-9QX">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6o8-h6-9QX" id="2ZK-0u-J5o">
@@ -113,7 +116,7 @@
                                 <state key="normal" title="지도표시"/>
                             </button>
                             <connections>
-                                <segue destination="Xnu-59-LgW" kind="show" id="Kqb-Yd-acV"/>
+                                <segue destination="Xnu-59-LgW" kind="show" identifier="segueToMapView" id="Kqb-Yd-acV"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -208,7 +211,7 @@
                                 <rect key="frame" x="140" y="268.5" width="95" height="30"/>
                                 <state key="normal" title="지역명으로 검색"/>
                                 <connections>
-                                    <segue destination="35A-Ah-Sic" kind="show" id="7r4-iQ-4Rd"/>
+                                    <segue destination="35A-Ah-Sic" kind="show" identifier="" id="7r4-iQ-4Rd"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jmi-in-VlF">
@@ -295,7 +298,7 @@
         <!--지역별 검색-->
         <scene sceneID="XjO-tZ-YrG">
             <objects>
-                <viewController title="지역별 검색" id="gP4-dh-b46" customClass="ViewController" customModule="TermProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="지역별 검색" id="gP4-dh-b46" customClass="Region_SearchViewController" customModule="TermProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZSZ-fJ-2tk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -315,12 +318,12 @@
                     <navigationItem key="navigationItem" title="지역별 검색" id="9qO-qp-r8F">
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="TBj-Jm-Aci">
                             <connections>
-                                <segue destination="Mv6-zr-pFc" kind="show" id="fII-o1-cT9"/>
+                                <segue destination="Mv6-zr-pFc" kind="show" identifier="segueToRestorantList" id="fII-o1-cT9"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="pickerView" destination="vJs-jC-QxA" id="Eej-NO-HPR"/>
+                        <outlet property="pickerView" destination="vJs-jC-QxA" id="MdN-R7-Qpn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R8v-K1-XTM" sceneMemberID="firstResponder"/>
@@ -421,6 +424,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="51-514236_white-magnifying-glass-png-search-magnifying-glass-icon.png" width="600" height="598"/>
+        <image name="51-514236_white-magnifying-glass-png-search-magnifying-glass-icon.png" width="45" height="45"/>
     </resources>
 </document>

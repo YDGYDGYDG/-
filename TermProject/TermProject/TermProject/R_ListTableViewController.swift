@@ -11,7 +11,7 @@ class R_ListTableViewController: UITableViewController, XMLParserDelegate {
     
     var posts = NSMutableArray()
     
-    // 문자검사
+    //
     var elements = NSMutableDictionary()
     var element = NSString()
     
@@ -120,6 +120,12 @@ class R_ListTableViewController: UITableViewController, XMLParserDelegate {
                 if let informationTableViewController = segue.destination as? R_InformationTableViewController{
                     informationTableViewController.url = url! + "&BIZPLC_NM=" + restorantname_utf8
                 }
+            }
+        }
+        
+        if segue.identifier == "segueToMapView"{
+            if let mapViewController = segue.destination as? R_MapViewController{
+                mapViewController.posts = posts
             }
         }
     }

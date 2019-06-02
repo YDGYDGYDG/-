@@ -11,7 +11,8 @@ class R_InformationTableViewController: UITableViewController, XMLParserDelegate
     let postsname : [String] = ["업소명", "업종", "주소(지번)", "주소(도로명)", "개업일", "운영 여부"]
     var posts : [String] = ["","","","","",""]
     
-    var position = NSMutableArray()
+    var mapPosts = NSMutableArray()
+    var mapElements : [String] = ["","","",""]
     
     var element = NSString()
     
@@ -22,6 +23,8 @@ class R_InformationTableViewController: UITableViewController, XMLParserDelegate
     var openDate = NSMutableString()
     var nowOn = NSMutableString()
     
+    var XPos = NSMutableString()
+    var YPos = NSMutableString()
     
     func beginParsing(){
         posts = []
@@ -57,6 +60,10 @@ class R_InformationTableViewController: UITableViewController, XMLParserDelegate
             nowOn = NSMutableString()
             nowOn = ""
             
+            XPos = NSMutableString()
+            XPos = ""
+            YPos = NSMutableString()
+            YPos = ""
         }
     }
     
@@ -84,19 +91,27 @@ class R_InformationTableViewController: UITableViewController, XMLParserDelegate
             nowOn.append(string)
             
         }
-        
+            
+        else if element.isEqual(to: "REFINE_WGS84_LAT"){
+            XPos.append(string)
+        }
+        else if element.isEqual(to: "REFINE_WGS84_LOGT"){
+            YPos.append(string)
+        }
     }
     
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         if (elementName as NSString).isEqual(to: "row"){
             if !restNm.isEqual(nil){
                 posts[0] = restNm as String
+                mapElements[0] = restNm as String
             }
             if !restFd.isEqual(nil){
                 posts[1] = restFd as String
             }
             if !addr.isEqual(nil){
                 posts[2] = addr as String
+                mapElements[1] = addr as String
             }
             if !addrRM.isEqual(nil){
                 posts[3] = addrRM as String
@@ -107,6 +122,13 @@ class R_InformationTableViewController: UITableViewController, XMLParserDelegate
             if !nowOn.isEqual(nil){
                 posts[5] = nowOn as String
             }
+            if !XPos.isEqual(nil){
+                mapElements[2] = XPos as String
+            }
+            if !YPos.isEqual(nil){
+                mapElements[3] = YPos as String
+            }
+            mapPosts.add(mapElements)
         }
     }
     
@@ -127,7 +149,7 @@ class R_InformationTableViewController: UITableViewController, XMLParserDelegate
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueToMapView"{
             if let mapViewController = segue.destination as? R_MapViewController{
-                mapViewController.posts = position
+                mapViewController.posts = mapPosts
             }
         }
     }

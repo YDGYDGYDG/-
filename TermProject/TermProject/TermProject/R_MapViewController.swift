@@ -8,6 +8,9 @@ class R_MapViewController: UIViewController, MKMapViewDelegate {
     
     var posts = NSMutableArray()
     
+    var lon : Double = 0
+    var lat : Double = 0
+    
     let regionRadius: CLLocationDistance = 5000
     func centerMapOnLocation(location: CLLocation){
         let coordinateRegion = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
@@ -19,12 +22,12 @@ class R_MapViewController: UIViewController, MKMapViewDelegate {
     
     func loadInitialData(){
         for post in posts{
-            let sigunNm = (post as AnyObject).value(forKey: "SIGUN_NM") as! NSString as String
+            let sigunNm = (post as AnyObject).value(forKey: "BIZPLC_NM") as! NSString as String
             let addr = (post as AnyObject).value(forKey: "REFINE_LOTNO_ADDR") as! NSString as String
             let XPos = (post as AnyObject).value(forKey: "REFINE_WGS84_LOGT") as! NSString as String
             let YPos = (post as AnyObject).value(forKey: "REFINE_WGS84_LAT") as! NSString as String
-            let lon = (XPos as NSString).doubleValue
-            let lat = (YPos as NSString).doubleValue
+            lon = (XPos as NSString).doubleValue
+            lat = (YPos as NSString).doubleValue
             let restorant = Restorant(title: sigunNm, locationName: addr, coordinate: CLLocationCoordinate2D(latitude: lat, longitude: lon))
             restorants.append(restorant)
         }
@@ -58,19 +61,17 @@ class R_MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let initialLocation = CLLocation(latitude: 37.5384514, longitude: 127.0709764)
-        centerMapOnLocation(location: initialLocation)
         
         mapView.delegate = self
         
         loadInitialData()
+        
+        let initialLocation = CLLocation(latitude: lat, longitude: lon)
+        centerMapOnLocation(location: initialLocation)
+        
         mapView.addAnnotations(restorants)
     }
     
-    
-
 }

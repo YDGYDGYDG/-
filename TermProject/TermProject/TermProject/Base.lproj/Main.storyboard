@@ -60,13 +60,8 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="지도표시" id="JlW-dm-Mfg">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="eOa-0T-UUa">
-                                <rect key="frame" x="-23" y="-15" width="83" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="지도표시"/>
-                            </button>
                             <connections>
-                                <segue destination="Xnu-59-LgW" kind="show" id="XdT-ZZ-tir"/>
+                                <segue destination="Xnu-59-LgW" kind="show" identifier="segueToMapView" id="fos-mf-wKX"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -126,13 +121,8 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="지도표시" id="42k-mw-HIt">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4kH-DO-Vg2">
-                                <rect key="frame" x="276" y="7" width="83" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="지도표시"/>
-                            </button>
                             <connections>
-                                <segue destination="Xnu-59-LgW" kind="show" identifier="segueToMapView" id="Kqb-Yd-acV"/>
+                                <segue destination="Xnu-59-LgW" kind="show" id="rbX-et-B7B"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -447,6 +437,6 @@
         <image name="51-514236_white-magnifying-glass-png-search-magnifying-glass-icon.png" width="45" height="45"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Kqb-Yd-acV"/>
+        <segue reference="rbX-et-B7B"/>
     </inferredMetricsTieBreakers>
 </document>

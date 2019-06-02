@@ -224,10 +224,6 @@
                                     <segue destination="35A-Ah-Sic" kind="show" identifier="" id="7r4-iQ-4Rd"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jmi-in-VlF">
-                                <rect key="frame" x="146.5" y="318.5" width="82" height="30"/>
-                                <state key="normal" title="업종으로 검색"/>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DOf-tV-aTd">
                                 <rect key="frame" x="140" y="368.5" width="95" height="30"/>
                                 <state key="normal" title="상호명으로 검색"/>
@@ -235,12 +231,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="jmi-in-VlF" firstAttribute="centerY" secondItem="dX3-U1-O7s" secondAttribute="centerY" id="CnY-Ag-XA5"/>
                             <constraint firstItem="PuK-ZU-t55" firstAttribute="centerX" secondItem="dX3-U1-O7s" secondAttribute="centerX" id="FYy-gv-FEF"/>
                             <constraint firstItem="DOf-tV-aTd" firstAttribute="centerX" secondItem="dX3-U1-O7s" secondAttribute="centerX" id="d8y-LZ-udF"/>
                             <constraint firstItem="DOf-tV-aTd" firstAttribute="centerY" secondItem="dX3-U1-O7s" secondAttribute="centerY" constant="50" id="umC-g5-NUn"/>
                             <constraint firstItem="PuK-ZU-t55" firstAttribute="centerY" secondItem="dX3-U1-O7s" secondAttribute="centerY" constant="-50" id="yOe-QS-met"/>
-                            <constraint firstItem="jmi-in-VlF" firstAttribute="centerX" secondItem="dX3-U1-O7s" secondAttribute="centerX" id="z1S-fn-F57"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iZj-dU-qO1"/>
                     </view>

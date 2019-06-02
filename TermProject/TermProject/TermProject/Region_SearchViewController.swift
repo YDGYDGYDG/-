@@ -42,9 +42,10 @@ class Region_SearchViewController: UIViewController, UIPickerViewDelegate, UIPic
         "포천시",
         "하남시",
         "화성시"]
-    var SIGUN_NM : String = ""
-    var url : String = "https://openapi.gg.go.kr/Genrestrtcate?KEY=aade671fa9c8412ba273f83db26a49e6&pIndex=1&pSize=100&SIGUN_NM="
-    
+    var SIGUN_NM : String = "가평군"
+    var SIGUN_NM_utf8 : String = ""
+    var url : String = "https://openapi.gg.go.kr/Genrestrtcate?KEY=aade671fa9c8412ba273f83db26a49e6"
+
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -154,6 +155,7 @@ class Region_SearchViewController: UIViewController, UIPickerViewDelegate, UIPic
             SIGUN_NM = "\(SIGUN_NMList[row])"
             break;
         default:
+            SIGUN_NM = "\(SIGUN_NMList[0])"
             break;
         }
     }
@@ -161,13 +163,13 @@ class Region_SearchViewController: UIViewController, UIPickerViewDelegate, UIPic
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueToRestorantList"{
             if let navController = segue.destination as? UINavigationController{
+                SIGUN_NM_utf8 = SIGUN_NM.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
                 if let listTableViewController = navController.topViewController as? R_ListTableViewController{
-                    listTableViewController.url = url + SIGUN_NM
+                    listTableViewController.url = url + "&SIGUN_NM=" + SIGUN_NM_utf8
                 }
             }
         }
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()

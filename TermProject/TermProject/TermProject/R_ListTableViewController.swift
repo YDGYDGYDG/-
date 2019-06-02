@@ -11,15 +11,20 @@ class R_ListTableViewController: UITableViewController, XMLParserDelegate {
     
     var posts = NSMutableArray()
     
+    // 문자검사
     var elements = NSMutableDictionary()
     var element = NSString()
     
-    var yadmNm = NSMutableString()
+    // 업소명
+    var restNm = NSMutableString()
+    // 주소
     var addr = NSMutableString()
-    
+    // 지도상 위치
     var XPos = NSMutableString()
     var YPos = NSMutableString()
-    
+    // 업소명을 주소로 주기 위한 저장
+    var restorantname = ""
+    var restorantname_utf8 = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,8 +46,8 @@ class R_ListTableViewController: UITableViewController, XMLParserDelegate {
         if (elementName as NSString).isEqual(to: "row"){
             elements = NSMutableDictionary()
             elements = [:]
-            yadmNm = NSMutableString()
-            yadmNm = ""
+            restNm = NSMutableString()
+            restNm = ""
             addr = NSMutableString()
             addr = ""
             XPos = NSMutableString()
@@ -53,8 +58,8 @@ class R_ListTableViewController: UITableViewController, XMLParserDelegate {
     }
     
     func parser(_ parser: XMLParser, foundCharacters string: String) {
-        if element.isEqual(to: "SIGUN_NM"){
-            yadmNm.append(string)
+        if element.isEqual(to: "BIZPLC_NM"){
+            restNm.append(string)
         }
         else if element.isEqual(to: "REFINE_LOTNO_ADDR"){
             addr.append(string)
@@ -70,8 +75,8 @@ class R_ListTableViewController: UITableViewController, XMLParserDelegate {
     
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         if (elementName as NSString).isEqual(to: "row"){
-            if !yadmNm.isEqual(nil){
-                elements.setObject(yadmNm, forKey: "SIGUN_NM" as NSCopying)
+            if !restNm.isEqual(nil){
+                elements.setObject(restNm, forKey: "BIZPLC_NM" as NSCopying)
             }
             
             if !addr.isEqual(nil){
@@ -96,7 +101,7 @@ class R_ListTableViewController: UITableViewController, XMLParserDelegate {
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
-        cell.textLabel?.text = (posts.object(at: indexPath.row) as AnyObject).value(forKey: "SIGUN_NM")
+        cell.textLabel?.text = (posts.object(at: indexPath.row) as AnyObject).value(forKey: "BIZPLC_NM")
             as! NSString as String
         cell.detailTextLabel?.text = (posts.object(at: indexPath.row) as AnyObject).value(forKey: "REFINE_LOTNO_ADDR")
             as! NSString as String
@@ -104,7 +109,20 @@ class R_ListTableViewController: UITableViewController, XMLParserDelegate {
         return cell
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueToRestorantInformation"{
+            if let cell = sender as? UITableViewCell{
+                let indexPath = tableView.indexPath(for: cell)
+                
+                restorantname = (posts.object(at: (indexPath?.row)!)as AnyObject).value(forKey: "BIZPLC_NM") as! NSString as String
+                restorantname_utf8 = restorantname.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+                
+                if let informationTableViewController = segue.destination as? R_InformationTableViewController{
+                    informationTableViewController.url = url! + "&BIZPLC_NM=" + restorantname_utf8
+                }
+            }
+        }
+    }
     
     
 }

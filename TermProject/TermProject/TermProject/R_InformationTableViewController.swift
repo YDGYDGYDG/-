@@ -1,10 +1,3 @@
-//
-//  R_InformationTableViewController.swift
-//  TermProject
-//
-//  Created by kpugame on 2019. 5. 30..
-//  Copyright © 2019년 YDK. All rights reserved.
-//
 
 import UIKit
 
@@ -22,12 +15,12 @@ class R_InformationTableViewController: UITableViewController, XMLParserDelegate
     
     var element = NSString()
     
-    var yadmNm = NSMutableString()
+    var restNm = NSMutableString()
+    var restFd = NSMutableString()
     var addr = NSMutableString()
-    var telno = NSMutableString()
-    var hospUrl = NSMutableString()
-    var clCdNm = NSMutableString()
-    var estbDd = NSMutableString()
+    var addrRM = NSMutableString()
+    var openDate = NSMutableString()
+    var nowOn = NSMutableString()
     
     
     func beginParsing(){
@@ -48,71 +41,71 @@ class R_InformationTableViewController: UITableViewController, XMLParserDelegate
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
         
         element = elementName as NSString
-        if(elementName as NSString).isEqual(to: "item"){
+        if(elementName as NSString).isEqual(to: "row"){
             posts = ["","","","","",""]
             
-            yadmNm = NSMutableString()
-            yadmNm = ""
+            restNm = NSMutableString()
+            restNm = ""
+            restFd = NSMutableString()
+            restFd = ""
             addr = NSMutableString()
             addr = ""
-            telno = NSMutableString()
-            telno = ""
-            hospUrl = NSMutableString()
-            hospUrl = ""
-            clCdNm = NSMutableString()
-            clCdNm = ""
-            estbDd = NSMutableString()
-            estbDd = ""
+            addrRM = NSMutableString()
+            addrRM = ""
+            openDate = NSMutableString()
+            openDate = ""
+            nowOn = NSMutableString()
+            nowOn = ""
             
         }
     }
     
     func parser(_ parser: XMLParser, foundCharacters string: String) {
         if element.isEqual(to: "BIZPLC_NM"){
-            yadmNm.append(string)
+            restNm.append(string)
         }
         else if element.isEqual(to: "SANITTN_BIZCOND_NM"){
-            addr.append(string)
+            restFd.append(string)
             
         }
         else if element.isEqual(to: "REFINE_LOTNO_ADDR"){
-            telno.append(string)
+            addr.append(string)
             
         }
         else if element.isEqual(to: "REFINE_ROADNM_ADDR"){
-            hospUrl.append(string)
+            addrRM.append(string)
             
         }
         else if element.isEqual(to: "LICENSG_DE"){
-            clCdNm.append(string)
+            openDate.append(string)
             
         }
         else if element.isEqual(to: "BSN_STATE_NM"){
-            estbDd.append(string)
+            nowOn.append(string)
             
         }
         
     }
     
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
-        if (elementName as NSString).isEqual(to: "item"){
-            if !yadmNm.isEqual(nil){
-                posts[0] = yadmNm as String
+        if (elementName as NSString).isEqual(to: "row"){
+            if !restNm.isEqual(nil){
+                posts[0] = restNm as String
+            }
+            if !restFd.isEqual(nil){
+                posts[1] = restFd as String
             }
             if !addr.isEqual(nil){
-                posts[1] = addr as String
+                posts[2] = addr as String
             }
-            if !telno.isEqual(nil){
-                posts[2] = telno as String
+            if !addrRM.isEqual(nil){
+                posts[3] = addrRM as String
             }
-            if !hospUrl.isEqual(nil){
-                posts[3] = hospUrl as String
+            if !openDate.isEqual(nil){
+                posts[4] = openDate as String
             }
-            if !clCdNm.isEqual(nil){
-                posts[4] = clCdNm as String
-            }
-            if !estbDd.isEqual(nil){
-                posts[5] = estbDd as String
+            if !nowOn.isEqual(nil){
+                posts[5] = nowOn as String
             }
         }
     }

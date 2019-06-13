@@ -1,9 +1,10 @@
 
 import UIKit
 
-class R_ListTableViewController: UITableViewController, XMLParserDelegate {
+class R_ListTableViewController: UIViewController, XMLParserDelegate, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet var tbData: UITableView!
+    @IBOutlet weak var searchFooter: SearchFooter!
     
     var url: String?
     
@@ -29,6 +30,7 @@ class R_ListTableViewController: UITableViewController, XMLParserDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         beginParsing()
+        tbData.tableFooterView = searchFooter
     }
     
     func beginParsing(){
@@ -93,11 +95,11 @@ class R_ListTableViewController: UITableViewController, XMLParserDelegate {
         }
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
     }
     
-    override func tableView(_ tableView:UITableView, cellForRowAt indexPath: IndexPath)->UITableViewCell
+    func tableView(_ tableView:UITableView, cellForRowAt indexPath: IndexPath)->UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
@@ -129,6 +131,5 @@ class R_ListTableViewController: UITableViewController, XMLParserDelegate {
             }
         }
     }
-    
     
 }

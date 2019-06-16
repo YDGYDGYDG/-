@@ -68,11 +68,10 @@ class R_MapViewController: UIViewController, MKMapViewDelegate {
         
         mapView.delegate = self
         
-        loadInitialData()
-        
         let initialLocation = CLLocation(latitude: lat, longitude: lon)
         centerMapOnLocation(location: initialLocation)
         
+        //loadInitialData()
         mapView.addAnnotations(restorants)
     }
     

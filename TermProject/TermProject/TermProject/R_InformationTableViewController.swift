@@ -8,26 +8,25 @@ class R_InformationTableViewController: UITableViewController {
     
     let postsname : [String] = ["업소명", "주소(지번)", "업종", "개업일"]
     var posts : [String] = ["","","",""]
-    
-    var mapPosts = NSMutableArray()
-    var mapElements : [String] = ["","","",""]
-    
-    var restName = NSString()
-    var rests = Restorant(resNm: "default", locationName: "default", coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0), resFd: "default", resOpDt: "default")
+    var parameters : [String] =
+        ["restNm", "locationName", "resFd", "resOpDt"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadInitialData()
     }
     
     
-    func loadInitialData(){
-        posts[0] = rests.resNm
-        posts[1] = rests.locationName
-        posts[2] = rests.resFd
-        posts[3] = rests.resOpDt
-        
-        detailTableView.reloadData()
+    func initialize(post : Restorant!)
+    {
+        print(post)
+        var str = post.resNm as NSString as String
+        posts[0] = str
+        str = post.locationName as NSString as String
+        posts[1] = str
+        str = post.resFd as NSString as String
+        posts[2] = str
+        str = post.resOpDt as NSString as String
+        posts[3] = str
     }
     
     
@@ -47,7 +46,7 @@ class R_InformationTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueToMapView"{
             if let mapViewController = segue.destination as? R_MapViewController{
-                mapViewController.posts = mapPosts
+
             }
         }
     }

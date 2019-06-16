@@ -26,16 +26,16 @@ class R_ListTableViewController: UIViewController, XMLParserDelegate, UITableVie
     var element = NSString()
     
     // 업소명
-    var restNm = NSMutableString()
+    var BIZPLC_NM = NSMutableString()
     // 주소
-    var addr = NSMutableString()
+    var REFINE_LOTNO_ADDR = NSMutableString()
     // 지도상 위치
-    var XPos = NSMutableString()
-    var YPos = NSMutableString()
+    var REFINE_WGS84_LOGT = NSMutableString()
+    var REFINE_WGS84_LAT = NSMutableString()
     // 업종
-    var resFd = NSMutableString()
+    var SANITTN_BIZCOND_NM = NSMutableString()
     // 오픈일
-    var resOpDt = NSMutableString()
+    var LICENSG_DE = NSMutableString()
 
     
     func beginParsing(){
@@ -53,80 +53,84 @@ class R_ListTableViewController: UIViewController, XMLParserDelegate, UITableVie
         if (elementName as NSString).isEqual(to: "row"){
             elements = NSMutableDictionary()
             elements = [:]
-            restNm = NSMutableString()
-            restNm = ""
-            addr = NSMutableString()
-            addr = ""
-            XPos = NSMutableString()
-            XPos = ""
-            YPos = NSMutableString()
-            YPos = ""
-            resFd = NSMutableString()
-            resFd = ""
-            resOpDt = NSMutableString()
-            resOpDt = ""
+            BIZPLC_NM           = NSMutableString()
+            BIZPLC_NM           = ""
+            REFINE_LOTNO_ADDR   = NSMutableString()
+            REFINE_LOTNO_ADDR   = ""
+            REFINE_WGS84_LOGT   = NSMutableString()
+            REFINE_WGS84_LOGT   = ""
+            REFINE_WGS84_LAT    = NSMutableString()
+            REFINE_WGS84_LAT    = ""
+            SANITTN_BIZCOND_NM = NSMutableString()
+            SANITTN_BIZCOND_NM = ""
+            LICENSG_DE          = NSMutableString()
+            LICENSG_DE          = ""
         }
     }
     
     func parser(_ parser: XMLParser, foundCharacters string: String) {
         if element.isEqual(to: "BIZPLC_NM"){
-            restNm.append(string)
+            BIZPLC_NM.append(string)
         }
         else if element.isEqual(to: "REFINE_LOTNO_ADDR"){
-            addr.append(string)
+            REFINE_LOTNO_ADDR.append(string)
         }
         else if element.isEqual(to: "REFINE_WGS84_LOGT"){
-            XPos.append(string)
+            REFINE_WGS84_LOGT.append(string)
         }
         else if element.isEqual(to: "REFINE_WGS84_LAT"){
-            YPos.append(string)
+            REFINE_WGS84_LAT.append(string)
         }
         else if element.isEqual(to: "SANITTN_BIZCOND_NM"){
-            resFd.append(string)
+            SANITTN_BIZCOND_NM.append(string)
         }
         else if element.isEqual(to: "LICENSG_DE"){
-            resOpDt.append(string)
+            LICENSG_DE.append(string)
         }
     }
     
-    func loadInitialData(){
-        for post in posts{
-            let resNm = (post as AnyObject).value(forKey: "BIZPLC_NM") as! NSString as String
-            let addr = (post as AnyObject).value(forKey: "REFINE_LOTNO_ADDR") as! NSString as String
-            let XPos = (post as AnyObject).value(forKey: "REFINE_WGS84_LOGT") as! NSString as String
-            let YPos = (post as AnyObject).value(forKey: "REFINE_WGS84_LAT") as! NSString as String
-            lon = (XPos as NSString).doubleValue
-            lat = (YPos as NSString).doubleValue
-            let resFd = (post as AnyObject).value(forKey: "SANITTN_BIZCOND_NM") as! NSString as String
-            let resOpDt = (post as AnyObject).value(forKey: "LICENSG_DE") as! NSString as String
-            let restorant = Restorant(resNm: resNm, locationName: addr, coordinate: CLLocationCoordinate2D(latitude: lat, longitude: lon), resFd: resFd, resOpDt: resOpDt)
-            rests.append(restorant)
-        }
-    }
+    
     
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         if (elementName as NSString).isEqual(to: "row"){
-            if !restNm.isEqual(nil){
-                elements.setObject(restNm, forKey: "BIZPLC_NM" as NSCopying)
+            if !BIZPLC_NM.isEqual(nil){
+                elements.setObject(BIZPLC_NM, forKey: "BIZPLC_NM" as NSCopying)
             }
-            if !addr.isEqual(nil){
-                elements.setObject(addr, forKey: "REFINE_LOTNO_ADDR" as NSCopying)
+            if !REFINE_LOTNO_ADDR.isEqual(nil){
+                elements.setObject(REFINE_LOTNO_ADDR, forKey: "REFINE_LOTNO_ADDR" as NSCopying)
             }
-            if !XPos.isEqual(nil){
-                elements.setObject(XPos, forKey: "REFINE_WGS84_LOGT" as NSCopying)
+            if !REFINE_WGS84_LOGT.isEqual(nil){
+                elements.setObject(REFINE_WGS84_LOGT, forKey: "REFINE_WGS84_LOGT" as NSCopying)
             }
-            if !YPos.isEqual(nil){
-                elements.setObject(YPos, forKey: "REFINE_WGS84_LAT" as NSCopying)
+            if !REFINE_WGS84_LAT.isEqual(nil){
+                elements.setObject(REFINE_WGS84_LAT, forKey: "REFINE_WGS84_LAT" as NSCopying)
             }
-            if !resFd.isEqual(nil){
-                elements.setObject(resFd, forKey: "SANITTN_BIZCOND_NM" as NSCopying)
+            if !SANITTN_BIZCOND_NM.isEqual(nil){
+                elements.setObject(SANITTN_BIZCOND_NM, forKey: "SANITTN_BIZCOND_NM" as NSCopying)
             }
-            if !resOpDt.isEqual(nil){
-                elements.setObject(resOpDt, forKey: "LICENSG_DE" as NSCopying)
+            if !LICENSG_DE.isEqual(nil){
+                elements.setObject(LICENSG_DE, forKey: "LICENSG_DE" as NSCopying)
             }
             posts.add(elements)
         }
     }
+    
+    
+    func loadInitialData(){
+        for post in self.posts{
+            let BIZPLC_NM = (post as AnyObject).value(forKey: "BIZPLC_NM") as! NSString as String
+            let REFINE_LOTNO_ADDR = (post as AnyObject).value(forKey: "REFINE_LOTNO_ADDR") as! NSString as String
+            let REFINE_WGS84_LOGT = (post as AnyObject).value(forKey: "REFINE_WGS84_LOGT") as! NSString as String
+            let REFINE_WGS84_LAT = (post as AnyObject).value(forKey: "REFINE_WGS84_LAT") as! NSString as String
+            lon = (REFINE_WGS84_LOGT as NSString).doubleValue
+            lat = (REFINE_WGS84_LAT as NSString).doubleValue
+            let SANITTN_BIZCOND_NM = (post as AnyObject).value(forKey: "SANITTN_BIZCOND_NM") as! NSString as String
+            let LICENSG_DE = (post as AnyObject).value(forKey: "LICENSG_DE") as! NSString as String
+            let restorant = Restorant(resNm: BIZPLC_NM, locationName: REFINE_LOTNO_ADDR, coordinate: CLLocationCoordinate2D(latitude: lat, longitude: lon), resFd: SANITTN_BIZCOND_NM, resOpDt: LICENSG_DE)
+            rests.append(restorant)
+        }
+    }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isFiltering() {
@@ -152,7 +156,7 @@ class R_ListTableViewController: UIViewController, XMLParserDelegate, UITableVie
         }
         cell.textLabel?.text = resList.resNm
         cell.detailTextLabel?.text = resList.locationName
-        
+
         return cell
     }
     
@@ -160,27 +164,33 @@ class R_ListTableViewController: UIViewController, XMLParserDelegate, UITableVie
         if segue.identifier == "segueToRestorantInformation"{
             if let cell = sender as? UITableViewCell{
                 let indexPath = tbData.indexPath(for: cell)
-                restName = (posts.object(at: (indexPath?.row)!)as   AnyObject).value(forKey: "BIZPLC_NM") as! NSString
                 
-                if let informationTableViewController = segue.destination as?   R_InformationTableViewController{
+                if let informationTableViewController = segue.destination as? R_InformationTableViewController {
                     if isFiltering(){
-                        informationTableViewController.rests =  filteredRests[(indexPath?.row)!]
+                        informationTableViewController.initialize(post: filteredRests[(indexPath?.row)!])
                     }
                     else {
-                        informationTableViewController.rests =  rests[(indexPath?.row)!]
+                        //informationTableViewController.initialize(post: posts.object(at: (indexPath?.row)!)as AnyObject)
+                        informationTableViewController.initialize(post: rests[(indexPath?.row)!])
                     }
-                    informationTableViewController.restName = restName
                 }
+ 
             }
         }
         
         if segue.identifier == "segueToMapView"{
             if let mapViewController = segue.destination as? R_MapViewController{
-                mapViewController.posts = posts
+                if isFiltering(){
+                    mapViewController.restorants = filteredRests
+                }
+                else {
+                    mapViewController.restorants = rests
+                }
+        
             }
+    
         }
     }
-    
     func searchBarIsEmpty () -> Bool {
         return searchController.searchBar.text?.isEmpty ?? true
     }
@@ -215,8 +225,8 @@ class R_ListTableViewController: UIViewController, XMLParserDelegate, UITableVie
         navigationItem.searchController = searchController
         definesPresentationContext = true
         
-        searchController.searchBar.scopeButtonTitles = ["All", "까페", "일식", "중식"]
-        searchController.searchBar.delegate = self as? UISearchBarDelegate
+        searchController.searchBar.scopeButtonTitles = ["All", "까페", "일식", "중식", "패스트푸드"]
+        searchController.searchBar.delegate = self as UISearchBarDelegate
         
         tbData.tableFooterView = searchFooter
         

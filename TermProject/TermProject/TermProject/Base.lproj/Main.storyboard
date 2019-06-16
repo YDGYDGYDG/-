@@ -13,7 +13,7 @@
         <!--음식점 정보-->
         <scene sceneID="Hoj-Jm-4yT">
             <objects>
-                <tableViewController title="음식점 정보" id="GqF-Bd-LWf" customClass="R_InformationTableViewController" customModule="TermProject" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ResInformTVC" title="음식점 정보" id="GqF-Bd-LWf" customClass="R_InformationTableViewController" customModule="TermProject" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="OqB-PK-dG3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -50,7 +50,7 @@
                             <outlet property="delegate" destination="GqF-Bd-LWf" id="lvh-5C-ZhQ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="병원정보" id="eWO-Mf-jrT">
+                    <navigationItem key="navigationItem" title="음식점 정보" id="eWO-Mf-jrT">
                         <barButtonItem key="leftBarButtonItem" systemItem="done" id="fBt-zx-250">
                             <connections>
                                 <segue destination="ZnI-Sc-Q4h" kind="unwind" unwindAction="doneToPickerViewControllerWithSegue:" id="2yb-nd-qzL"/>
@@ -145,7 +145,7 @@
             </objects>
             <point key="canvasLocation" x="530" y="-1026"/>
         </scene>
-        <!--병원리스트-->
+        <!--음식점 리스트-->
         <scene sceneID="EyY-64-Hdy">
             <objects>
                 <viewController id="vGB-ad-VAb" customClass="R_ListTableViewController" customModule="TermProject" customModuleProvider="target" sceneMemberID="viewController">
@@ -187,7 +187,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Teb-y7-vc3" kind="show" identifier="segueToRestorantInformation" id="euU-fZ-auT"/>
+                                            <segue destination="GqF-Bd-LWf" kind="show" identifier="segueToRestorantInformation" id="eIk-qa-OyN"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -200,7 +200,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="h2L-OA-byK"/>
                     </view>
-                    <navigationItem key="navigationItem" title="병원리스트" id="p5U-i7-hvE">
+                    <navigationItem key="navigationItem" title="음식점 리스트" id="p5U-i7-hvE">
                         <barButtonItem key="leftBarButtonItem" systemItem="done" id="Nbw-kL-SVp">
                             <connections>
                                 <segue destination="7FJ-xw-gPz" kind="unwind" unwindAction="doneToPickerViewControllerWithSegue:" id="c5f-wQ-VWj"/>
@@ -477,5 +477,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="rbX-et-B7B"/>
+        <segue reference="eIk-qa-OyN"/>
     </inferredMetricsTieBreakers>
 </document>

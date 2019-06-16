@@ -6,8 +6,6 @@ class R_MapViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     
-    var posts = NSMutableArray()
-    
     var lon : Double = 0
     var lat : Double = 0
     
@@ -20,19 +18,20 @@ class R_MapViewController: UIViewController, MKMapViewDelegate {
     
     var restorants: [Restorant] = []
     
-    func loadInitialData(){
-        for post in posts{
-            let resNm = (post as AnyObject).value(forKey: "BIZPLC_NM") as! NSString as String
-            let addr = (post as AnyObject).value(forKey: "REFINE_LOTNO_ADDR") as! NSString as String
-            let XPos = (post as AnyObject).value(forKey: "REFINE_WGS84_LOGT") as! NSString as String
-            let YPos = (post as AnyObject).value(forKey: "REFINE_WGS84_LAT") as! NSString as String
-            lon = (XPos as NSString).doubleValue
-            lat = (YPos as NSString).doubleValue
-            let resFd = (post as AnyObject).value(forKey: "SANITTN_BIZCOND_NM") as! NSString as String
-            let resOpDt = (post as AnyObject).value(forKey: "LICENSG_DE") as! NSString as String
-            let restorant = Restorant(resNm: resNm, locationName: addr, coordinate: CLLocationCoordinate2D(latitude: lat, longitude: lon), resFd: resFd, resOpDt: resOpDt)
-            restorants.append(restorant)
-        }
+    func initializeLInformToMap(post : Restorant!)
+    {
+        lat = post.coordinate.latitude
+        lon = post.coordinate.longitude
+     let newRes = Restorant(title: post.title!, locationName: post.locationName, coordinate: post.coordinate, resFd: post.resFd, resOpDt: post.resOpDt)
+        restorants.append(newRes)
+    }
+    
+    func initializeListToMap(post : [Restorant]!)
+    {
+        lat = (post.last?.coordinate.latitude)!
+        lon = (post.last?.coordinate.longitude)!
+        let newRes : [Restorant] = post
+        restorants = newRes
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
@@ -66,12 +65,10 @@ class R_MapViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        mapView.delegate = self
-        
         let initialLocation = CLLocation(latitude: lat, longitude: lon)
         centerMapOnLocation(location: initialLocation)
         
-        //loadInitialData()
+        mapView.delegate = self
         mapView.addAnnotations(restorants)
     }
     

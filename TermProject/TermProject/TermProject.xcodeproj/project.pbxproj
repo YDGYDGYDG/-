@@ -48,7 +48,7 @@
 		A1A2697322B6A464005716B2 /* ExplodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExplodeView.swift; sourceTree = "<group>"; };
 		A1A2697622B6A480005716B2 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		A1A730FF229E8DB9009A433E /* R_ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R_ListTableViewController.swift; sourceTree = "<group>"; };
-		A1A73101229E8E95009A433E /* R_MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R_MapViewController.swift; sourceTree = "<group>"; };
+		A1A73101229E8E95009A433E /* R_MapViewController.swift */ = {isa = PBXFileReference; indentWidth = 5; lastKnownFileType = sourcecode.swift; path = R_MapViewController.swift; sourceTree = "<group>"; };
 		A1A73103229E8F57009A433E /* Restorant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restorant.swift; sourceTree = "<group>"; };
 		A1A73105229EF4E9009A433E /* Region_SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Region_SearchViewController.swift; sourceTree = "<group>"; };
 		A1DCAB7E22A44B8B001D8B33 /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = Base.lproj/star.png; sourceTree = "<group>"; };

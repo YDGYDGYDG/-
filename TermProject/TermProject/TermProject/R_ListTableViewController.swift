@@ -126,7 +126,7 @@ class R_ListTableViewController: UIViewController, XMLParserDelegate, UITableVie
             lat = (REFINE_WGS84_LAT as NSString).doubleValue
             let SANITTN_BIZCOND_NM = (post as AnyObject).value(forKey: "SANITTN_BIZCOND_NM") as! NSString as String
             let LICENSG_DE = (post as AnyObject).value(forKey: "LICENSG_DE") as! NSString as String
-            let restorant = Restorant(resNm: BIZPLC_NM, locationName: REFINE_LOTNO_ADDR, coordinate: CLLocationCoordinate2D(latitude: lat, longitude: lon), resFd: SANITTN_BIZCOND_NM, resOpDt: LICENSG_DE)
+            let restorant = Restorant(title: BIZPLC_NM, locationName: REFINE_LOTNO_ADDR, coordinate: CLLocationCoordinate2D(latitude: lat, longitude: lon), resFd: SANITTN_BIZCOND_NM, resOpDt: LICENSG_DE)
             rests.append(restorant)
         }
     }
@@ -154,7 +154,7 @@ class R_ListTableViewController: UIViewController, XMLParserDelegate, UITableVie
         else{
             resList = rests[indexPath.row]
         }
-        cell.textLabel?.text = resList.resNm
+        cell.textLabel?.text = resList.title
         cell.detailTextLabel?.text = resList.locationName
 
         return cell
@@ -181,14 +181,12 @@ class R_ListTableViewController: UIViewController, XMLParserDelegate, UITableVie
         if segue.identifier == "segueToMapView"{
             if let mapViewController = segue.destination as? R_MapViewController{
                 if isFiltering(){
-                    mapViewController.restorants = filteredRests
+                    mapViewController.initializeListToMap(post: filteredRests.self)
                 }
                 else {
-                    mapViewController.restorants = rests
+                    mapViewController.initializeListToMap(post: rests.self)
                 }
-        
             }
-    
         }
     }
     func searchBarIsEmpty () -> Bool {
@@ -203,7 +201,7 @@ class R_ListTableViewController: UIViewController, XMLParserDelegate, UITableVie
                 return doesCategoryMatch
             }
             else {
-                return doesCategoryMatch && restorant.resNm.lowercased().contains(searchText.lowercased())
+                return doesCategoryMatch && restorant.title!.lowercased().contains(searchText.lowercased())
             }
         })
         tbData.reloadData()

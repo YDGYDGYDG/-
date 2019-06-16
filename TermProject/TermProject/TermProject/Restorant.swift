@@ -10,7 +10,7 @@ import Contacts
 class Restorant: NSObject, MKAnnotation{
     
     // 상호
-    let resNm: String
+    let title: String?
     // 주소
     let locationName: String
     // 지도상위치
@@ -20,12 +20,12 @@ class Restorant: NSObject, MKAnnotation{
     // 개점 일자
     let resOpDt: String
     
-    init(resNm: String,
+    init(title: String,
          locationName:String,
          coordinate:CLLocationCoordinate2D,
          resFd: String,
          resOpDt: String) {
-        self.resNm = resNm
+        self.title = title
         self.locationName = locationName
         self.coordinate = coordinate
         self.resFd = resFd
@@ -43,7 +43,7 @@ class Restorant: NSObject, MKAnnotation{
         let addressDict = [CNPostalAddressStreetKey: subtitle!]
         let placemark = MKPlacemark(coordinate: coordinate, addressDictionary: addressDict)
         let mapItem = MKMapItem(placemark: placemark)
-        mapItem.name = resNm
+        mapItem.name = title
         
         return mapItem
         

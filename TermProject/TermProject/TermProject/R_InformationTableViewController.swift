@@ -15,11 +15,13 @@ class R_InformationTableViewController: UITableViewController {
         super.viewDidLoad()
     }
     
+    var resToMap : Restorant = Restorant(title: "", locationName: "", coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0), resFd: "", resOpDt: "")
     
     func initialize(post : Restorant!)
     {
-        print(post)
-        var str = post.resNm as NSString as String
+        resToMap = post
+        
+        var str = post.title as! NSString as String
         posts[0] = str
         str = post.locationName as NSString as String
         posts[1] = str
@@ -46,7 +48,7 @@ class R_InformationTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueToMapView"{
             if let mapViewController = segue.destination as? R_MapViewController{
-
+                mapViewController.initializeLInformToMap(post: resToMap)
             }
         }
     }

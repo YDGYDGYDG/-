@@ -7,7 +7,8 @@ class R_ListTableViewController: UIViewController, XMLParserDelegate, UITableVie
     @IBOutlet var tbData: UITableView!
     @IBOutlet weak var searchFooter: SearchFooter!
     
-    var url: String?
+    var url: [String]?
+    var urlSIGUN: String = ""
     
     var parser = XMLParser()
     
@@ -40,9 +41,11 @@ class R_ListTableViewController: UIViewController, XMLParserDelegate, UITableVie
     
     func beginParsing(){
         posts = []
-        parser = XMLParser(contentsOf: (URL(string: url!))!)!
-        parser.delegate = self
-        parser.parse()
+        for i in 0...4 {
+            parser = XMLParser(contentsOf: (URL(string: (url?[i])!+urlSIGUN))!)!
+            parser.delegate = self
+            parser.parse()
+        }
         tbData!.reloadData()
         
     }
@@ -223,7 +226,7 @@ class R_ListTableViewController: UIViewController, XMLParserDelegate, UITableVie
         navigationItem.searchController = searchController
         definesPresentationContext = true
         
-        searchController.searchBar.scopeButtonTitles = ["All", "까페", "일식", "중식", "패스트푸드"]
+        searchController.searchBar.scopeButtonTitles = ["All", "까페", "일식", "중국식", "패스트푸드", "탕류"]
         searchController.searchBar.delegate = self as UISearchBarDelegate
         
         tbData.tableFooterView = searchFooter

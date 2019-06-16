@@ -48,7 +48,8 @@ class Region_SearchViewController: UIViewController, UIPickerViewDelegate, UIPic
         "화성시"]
     var SIGUN_NM : String = "가평군"
     var SIGUN_NM_utf8 : String = ""
-    var url : String = "https://openapi.gg.go.kr/Genrestrtcate?KEY=aade671fa9c8412ba273f83db26a49e6"
+    var url : [String] = [ "https://openapi.gg.go.kr/Genrestrtcate?KEY=aade671fa9c8412ba273f83db26a49e6&SIGUN_NM=","https://openapi.gg.go.kr/Genrestrtfastfood?KEY=aade671fa9c8412ba273f83db26a49e6&SIGUN_NM=","https://openapi.gg.go.kr/Genrestrtchifood?KEY=aade671fa9c8412ba273f83db26a49e6&SIGUN_NM=","https://openapi.gg.go.kr/Genrestrtsoup?KEY=aade671fa9c8412ba273f83db26a49e6&SIGUN_NM=","https://openapi.gg.go.kr/Genrestrtjpnfood?KEY=aade671fa9c8412ba273f83db26a49e6&SIGUN_NM="
+    ]
 
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -169,7 +170,8 @@ class Region_SearchViewController: UIViewController, UIPickerViewDelegate, UIPic
             if let navController = segue.destination as? UINavigationController{
                 SIGUN_NM_utf8 = SIGUN_NM.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
                 if let listTableViewController = navController.topViewController as? R_ListTableViewController{
-                    listTableViewController.url = url + "&SIGUN_NM=" + SIGUN_NM_utf8
+                    listTableViewController.url = url
+                    listTableViewController.urlSIGUN = SIGUN_NM_utf8
                 }
             }
         }

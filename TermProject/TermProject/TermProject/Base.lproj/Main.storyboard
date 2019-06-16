@@ -56,11 +56,18 @@
                                 <segue destination="ZnI-Sc-Q4h" kind="unwind" unwindAction="doneToPickerViewControllerWithSegue:" id="2yb-nd-qzL"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="지도표시" id="42k-mw-HIt">
-                            <connections>
-                                <segue destination="Xnu-59-LgW" kind="show" identifier="segueToMapView" id="rbX-et-B7B"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="지도표시" id="42k-mw-HIt">
+                                <connections>
+                                    <segue destination="Xnu-59-LgW" kind="show" identifier="segueToMapView" id="rbX-et-B7B"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="북마크" image="star.png" id="WO3-KP-Osh">
+                                <connections>
+                                    <segue destination="2hE-Am-MBC" kind="show" id="F53-3o-o7u"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="detailTableView" destination="OqB-PK-dG3" id="jMf-UQ-p1c"/>
@@ -143,7 +150,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6dR-jX-YkU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="530" y="-1026"/>
+            <point key="canvasLocation" x="4796" y="-401"/>
         </scene>
         <!--음식점 리스트-->
         <scene sceneID="EyY-64-Hdy">
@@ -237,16 +244,10 @@
                                     <segue destination="35A-Ah-Sic" kind="show" identifier="" id="7r4-iQ-4Rd"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DOf-tV-aTd">
-                                <rect key="frame" x="140" y="368.5" width="95" height="30"/>
-                                <state key="normal" title="상호명으로 검색"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="PuK-ZU-t55" firstAttribute="centerX" secondItem="dX3-U1-O7s" secondAttribute="centerX" id="FYy-gv-FEF"/>
-                            <constraint firstItem="DOf-tV-aTd" firstAttribute="centerX" secondItem="dX3-U1-O7s" secondAttribute="centerX" id="d8y-LZ-udF"/>
-                            <constraint firstItem="DOf-tV-aTd" firstAttribute="centerY" secondItem="dX3-U1-O7s" secondAttribute="centerY" constant="50" id="umC-g5-NUn"/>
                             <constraint firstItem="PuK-ZU-t55" firstAttribute="centerY" secondItem="dX3-U1-O7s" secondAttribute="centerY" constant="-50" id="yOe-QS-met"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iZj-dU-qO1"/>
@@ -431,7 +432,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ta0-WR-cNf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-409" y="-1026"/>
+            <point key="canvasLocation" x="4078" y="-402"/>
         </scene>
         <!--검색-->
         <scene sceneID="ffI-RL-Ort">
@@ -476,6 +477,7 @@
         <image name="star.png" width="27" height="27"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="F53-3o-o7u"/>
         <segue reference="rbX-et-B7B"/>
         <segue reference="eIk-qa-OyN"/>
     </inferredMetricsTieBreakers>

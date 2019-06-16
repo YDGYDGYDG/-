@@ -22,13 +22,15 @@ class R_MapViewController: UIViewController, MKMapViewDelegate {
     
     func loadInitialData(){
         for post in posts{
-            let sigunNm = (post as AnyObject).value(forKey: "BIZPLC_NM") as! NSString as String
+            let resNm = (post as AnyObject).value(forKey: "BIZPLC_NM") as! NSString as String
             let addr = (post as AnyObject).value(forKey: "REFINE_LOTNO_ADDR") as! NSString as String
             let XPos = (post as AnyObject).value(forKey: "REFINE_WGS84_LOGT") as! NSString as String
             let YPos = (post as AnyObject).value(forKey: "REFINE_WGS84_LAT") as! NSString as String
             lon = (XPos as NSString).doubleValue
             lat = (YPos as NSString).doubleValue
-            let restorant = Restorant(title: sigunNm, locationName: addr, coordinate: CLLocationCoordinate2D(latitude: lat, longitude: lon))
+            let resFd = (post as AnyObject).value(forKey: "SANITTN_BIZCOND_NM") as! NSString as String
+            let resOpDt = (post as AnyObject).value(forKey: "LICENSG_DE") as! NSString as String
+            let restorant = Restorant(resNm: resNm, locationName: addr, coordinate: CLLocationCoordinate2D(latitude: lat, longitude: lon), resFd: resFd, resOpDt: resOpDt)
             restorants.append(restorant)
         }
     }

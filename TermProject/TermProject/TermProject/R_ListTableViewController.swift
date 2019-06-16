@@ -1,5 +1,6 @@
 
 import UIKit
+import MapKit
 
 class R_ListTableViewController: UIViewController, XMLParserDelegate, UITableViewDataSource, UITableViewDelegate {
 
@@ -11,6 +12,14 @@ class R_ListTableViewController: UIViewController, XMLParserDelegate, UITableVie
     var parser = XMLParser()
     
     var posts = NSMutableArray()
+    var filteredPosts = NSMutableArray()
+    var rests : [Restorant] = []
+    var restName = NSString()
+    var filteredRests : [Restorant] = []
+    let searchController = UISearchController(searchResultsController: nil)
+    
+    var lon : Double = 0
+    var lat : Double = 0
     
     //
     var elements = NSMutableDictionary()
@@ -23,15 +32,11 @@ class R_ListTableViewController: UIViewController, XMLParserDelegate, UITableVie
     // 지도상 위치
     var XPos = NSMutableString()
     var YPos = NSMutableString()
-    // 업소명을 주소로 주기 위한 저장
-    var restorantname = ""
-    var restorantname_utf8 = ""
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        beginParsing()
-        tbData.tableFooterView = searchFooter
-    }
+    // 업종
+    var resFd = NSMutableString()
+    // 오픈일
+    var resOpDt = NSMutableString()
+
     
     func beginParsing(){
         posts = []
@@ -56,6 +61,10 @@ class R_ListTableViewController: UIViewController, XMLParserDelegate, UITableVie
             XPos = ""
             YPos = NSMutableString()
             YPos = ""
+            resFd = NSMutableString()
+            resFd = ""
+            resOpDt = NSMutableString()
+            resOpDt = ""
         }
     }
     
@@ -66,12 +75,32 @@ class R_ListTableViewController: UIViewController, XMLParserDelegate, UITableVie
         else if element.isEqual(to: "REFINE_LOTNO_ADDR"){
             addr.append(string)
         }
-            
         else if element.isEqual(to: "REFINE_WGS84_LOGT"){
             XPos.append(string)
         }
         else if element.isEqual(to: "REFINE_WGS84_LAT"){
             YPos.append(string)
+        }
+        else if element.isEqual(to: "SANITTN_BIZCOND_NM"){
+            resFd.append(string)
+        }
+        else if element.isEqual(to: "LICENSG_DE"){
+            resOpDt.append(string)
+        }
+    }
+    
+    func loadInitialData(){
+        for post in posts{
+            let resNm = (post as AnyObject).value(forKey: "BIZPLC_NM") as! NSString as String
+            let addr = (post as AnyObject).value(forKey: "REFINE_LOTNO_ADDR") as! NSString as String
+            let XPos = (post as AnyObject).value(forKey: "REFINE_WGS84_LOGT") as! NSString as String
+            let YPos = (post as AnyObject).value(forKey: "REFINE_WGS84_LAT") as! NSString as String
+            lon = (XPos as NSString).doubleValue
+            lat = (YPos as NSString).doubleValue
+            let resFd = (post as AnyObject).value(forKey: "SANITTN_BIZCOND_NM") as! NSString as String
+            let resOpDt = (post as AnyObject).value(forKey: "LICENSG_DE") as! NSString as String
+            let restorant = Restorant(resNm: resNm, locationName: addr, coordinate: CLLocationCoordinate2D(latitude: lat, longitude: lon), resFd: resFd, resOpDt: resOpDt)
+            rests.append(restorant)
         }
     }
     
@@ -80,22 +109,33 @@ class R_ListTableViewController: UIViewController, XMLParserDelegate, UITableVie
             if !restNm.isEqual(nil){
                 elements.setObject(restNm, forKey: "BIZPLC_NM" as NSCopying)
             }
-            
             if !addr.isEqual(nil){
                 elements.setObject(addr, forKey: "REFINE_LOTNO_ADDR" as NSCopying)
             }
-            
             if !XPos.isEqual(nil){
                 elements.setObject(XPos, forKey: "REFINE_WGS84_LOGT" as NSCopying)
             }
             if !YPos.isEqual(nil){
                 elements.setObject(YPos, forKey: "REFINE_WGS84_LAT" as NSCopying)
             }
+            if !resFd.isEqual(nil){
+                elements.setObject(resFd, forKey: "SANITTN_BIZCOND_NM" as NSCopying)
+            }
+            if !resOpDt.isEqual(nil){
+                elements.setObject(resOpDt, forKey: "LICENSG_DE" as NSCopying)
+            }
             posts.add(elements)
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isFiltering() {
+            searchFooter.setIsFilteringToShow(filteredItemCount: filteredPosts.count, of: posts.count)
+            return filteredPosts.count
+        }
+            
+        searchFooter.setNotFiltering()
+        
         return posts.count
     }
     
@@ -103,26 +143,44 @@ class R_ListTableViewController: UIViewController, XMLParserDelegate, UITableVie
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
-        cell.textLabel?.text = (posts.object(at: indexPath.row) as AnyObject).value(forKey: "BIZPLC_NM")
-            as! NSString as String
-        cell.detailTextLabel?.text = (posts.object(at: indexPath.row) as AnyObject).value(forKey: "REFINE_LOTNO_ADDR")
-            as! NSString as String
+        let resList : Restorant
+        if isFiltering(){
+            resList = filteredRests[indexPath.row]
+            cell.textLabel!.text = resList.resNm
+            cell.detailTextLabel!.text = resList.locationName
+        }
+        else{
+            resList = rests[indexPath.row]
+            cell.textLabel?.text = resList.resNm
+            cell.detailTextLabel?.text = resList.locationName
+            /*
+             cell.textLabel?.text = (posts.object(at: indexPath.row) as AnyObject).value(forKey: "BIZPLC_NM")
+             as! NSString as String
+             cell.detailTextLabel?.text = (posts.object(at: indexPath.row) as AnyObject).value(forKey: "REFINE_LOTNO_ADDR")
+             as! NSString as String
+            */
+        }
+        
         
         return cell
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueToRestorantInformation"{
-            //if let cell = sender as? UITableViewCell{
-                //let indexPath = tableView.indexPath(for: cell)
+            if let cell = sender as? UITableViewCell{
+                let indexPath = tbData.indexPath(for: cell)
+                restName = (posts.object(at: (indexPath?.row)!)as   AnyObject).value(forKey: "BIZPLC_NM") as! NSString
                 
-                //restorantname = (posts.object(at: (indexPath?.row)!)as AnyObject).value(forKey: "BIZPLC_NM") as! NSString as String
-                //restorantname_utf8 = restorantname.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
-                
-                if let informationTableViewController = segue.destination as? R_InformationTableViewController{
-                    informationTableViewController.url = url
+                if let informationTableViewController = segue.destination as?   R_InformationTableViewController{
+                    if isFiltering(){
+                        informationTableViewController.rests =  filteredRests[(indexPath?.row)!]
+                    }
+                    else {
+                        informationTableViewController.rests =  rests[(indexPath?.row)!]
+                    }
+                    informationTableViewController.restName = restName
                 }
-            //}
+            }
         }
         
         if segue.identifier == "segueToMapView"{
@@ -132,4 +190,49 @@ class R_ListTableViewController: UIViewController, XMLParserDelegate, UITableVie
         }
     }
     
+    func searchBarIsEmpty () -> Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    func filterContentForSearchText(_ searchText: String, scope: String = "All") {
+        filteredRests = rests.filter({( restorant : Restorant) -> Bool in
+            let doesCategoryMatch = (scope == "All") || (restorant.resFd == scope)
+            
+            if searchBarIsEmpty() {
+                return doesCategoryMatch
+            }
+            else {
+                return doesCategoryMatch && restorant.resNm.lowercased().contains(searchText.lowercased())
+            }
+        })
+        tbData.reloadData()
+    }
+    
+    func isFiltering() -> Bool {
+        let searchBarScopeIsFiltering = searchController.searchBar.selectedScopeButtonIndex != 0
+        return searchController.isActive && (!searchBarIsEmpty() || searchBarScopeIsFiltering)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        beginParsing()
+        
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Restorants"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        tbData.tableFooterView = searchFooter
+        
+        loadInitialData()
+
+    }
+}
+
+
+extension R_ListTableViewController: UISearchResultsUpdating{
+    func updateSearchResults(for searchController: UISearchController) {
+        
+    }
 }

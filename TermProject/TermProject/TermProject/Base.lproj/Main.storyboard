@@ -53,7 +53,7 @@
                     <navigationItem key="navigationItem" title="병원정보" id="eWO-Mf-jrT">
                         <barButtonItem key="leftBarButtonItem" systemItem="done" id="fBt-zx-250">
                             <connections>
-                                <segue destination="ZnI-Sc-Q4h" kind="unwind" unwindAction="doneToPickerViewControllerWithSegue:" id="Ysw-ua-WdK"/>
+                                <segue destination="ZnI-Sc-Q4h" kind="unwind" unwindAction="doneToPickerViewControllerWithSegue:" id="2yb-nd-qzL"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="지도표시" id="42k-mw-HIt">
@@ -476,6 +476,6 @@
         <image name="star.png" width="27" height="27"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Uw0-fK-oza"/>
+        <segue reference="rbX-et-B7B"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -130,13 +130,13 @@ class R_ListTableViewController: UIViewController, XMLParserDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isFiltering() {
-            searchFooter.setIsFilteringToShow(filteredItemCount: filteredPosts.count, of: posts.count)
-            return filteredPosts.count
+            searchFooter.setIsFilteringToShow(filteredItemCount: filteredRests.count, of: rests.count)
+            return filteredRests.count
         }
             
         searchFooter.setNotFiltering()
         
-        return posts.count
+        return rests.count
     }
     
     func tableView(_ tableView:UITableView, cellForRowAt indexPath: IndexPath)->UITableViewCell
@@ -146,21 +146,12 @@ class R_ListTableViewController: UIViewController, XMLParserDelegate, UITableVie
         let resList : Restorant
         if isFiltering(){
             resList = filteredRests[indexPath.row]
-            cell.textLabel!.text = resList.resNm
-            cell.detailTextLabel!.text = resList.locationName
         }
         else{
             resList = rests[indexPath.row]
-            cell.textLabel?.text = resList.resNm
-            cell.detailTextLabel?.text = resList.locationName
-            /*
-             cell.textLabel?.text = (posts.object(at: indexPath.row) as AnyObject).value(forKey: "BIZPLC_NM")
-             as! NSString as String
-             cell.detailTextLabel?.text = (posts.object(at: indexPath.row) as AnyObject).value(forKey: "REFINE_LOTNO_ADDR")
-             as! NSString as String
-            */
         }
-        
+        cell.textLabel?.text = resList.resNm
+        cell.detailTextLabel?.text = resList.locationName
         
         return cell
     }
@@ -223,6 +214,10 @@ class R_ListTableViewController: UIViewController, XMLParserDelegate, UITableVie
         searchController.searchBar.placeholder = "Search Restorants"
         navigationItem.searchController = searchController
         definesPresentationContext = true
+        
+        searchController.searchBar.scopeButtonTitles = ["All", "까페", "일식", "중식"]
+        searchController.searchBar.delegate = self as? UISearchBarDelegate
+        
         tbData.tableFooterView = searchFooter
         
         loadInitialData()
@@ -233,6 +228,14 @@ class R_ListTableViewController: UIViewController, XMLParserDelegate, UITableVie
 
 extension R_ListTableViewController: UISearchResultsUpdating{
     func updateSearchResults(for searchController: UISearchController) {
-        
+        let searchBar = searchController.searchBar
+        let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
+        filterContentForSearchText(searchController.searchBar.text!, scope: scope)
+    }
+}
+
+extension R_ListTableViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        filterContentForSearchText(searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope])
     }
 }

@@ -17,6 +17,11 @@
 		A1929A0C228D344800C6734D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1929A0A228D344800C6734D /* LaunchScreen.storyboard */; };
 		A1A2696722B206D7005716B2 /* SearchFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A2696522B206D7005716B2 /* SearchFooter.swift */; };
 		A1A2696D22B229C5005716B2 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A2696C22B229C5005716B2 /* AppTheme.swift */; };
+		A1A2696F22B6A43F005716B2 /* Audio in Resources */ = {isa = PBXBuildFile; fileRef = A1A2696E22B6A43F005716B2 /* Audio */; };
+		A1A2697122B6A453005716B2 /* Particles in Resources */ = {isa = PBXBuildFile; fileRef = A1A2697022B6A452005716B2 /* Particles */; };
+		A1A2697422B6A464005716B2 /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A2697222B6A464005716B2 /* AudioController.swift */; };
+		A1A2697522B6A464005716B2 /* ExplodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A2697322B6A464005716B2 /* ExplodeView.swift */; };
+		A1A2697722B6A480005716B2 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A2697622B6A480005716B2 /* Config.swift */; };
 		A1A73100229E8DB9009A433E /* R_ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A730FF229E8DB9009A433E /* R_ListTableViewController.swift */; };
 		A1A73102229E8E95009A433E /* R_MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A73101229E8E95009A433E /* R_MapViewController.swift */; };
 		A1A73104229E8F57009A433E /* Restorant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A73103229E8F57009A433E /* Restorant.swift */; };
@@ -37,6 +42,11 @@
 		A1929A0D228D344800C6734D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1A2696522B206D7005716B2 /* SearchFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFooter.swift; sourceTree = "<group>"; };
 		A1A2696C22B229C5005716B2 /* AppTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
+		A1A2696E22B6A43F005716B2 /* Audio */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Audio; sourceTree = "<group>"; };
+		A1A2697022B6A452005716B2 /* Particles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Particles; sourceTree = "<group>"; };
+		A1A2697222B6A464005716B2 /* AudioController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioController.swift; sourceTree = "<group>"; };
+		A1A2697322B6A464005716B2 /* ExplodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExplodeView.swift; sourceTree = "<group>"; };
+		A1A2697622B6A480005716B2 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		A1A730FF229E8DB9009A433E /* R_ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R_ListTableViewController.swift; sourceTree = "<group>"; };
 		A1A73101229E8E95009A433E /* R_MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R_MapViewController.swift; sourceTree = "<group>"; };
 		A1A73103229E8F57009A433E /* Restorant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restorant.swift; sourceTree = "<group>"; };
@@ -90,6 +100,11 @@
 				A1A73103229E8F57009A433E /* Restorant.swift */,
 				A1A2696C22B229C5005716B2 /* AppTheme.swift */,
 				A1A2696522B206D7005716B2 /* SearchFooter.swift */,
+				A1A2697622B6A480005716B2 /* Config.swift */,
+				A1A2697222B6A464005716B2 /* AudioController.swift */,
+				A1A2697322B6A464005716B2 /* ExplodeView.swift */,
+				A1A2697022B6A452005716B2 /* Particles */,
+				A1A2696E22B6A43F005716B2 /* Audio */,
 			);
 			path = TermProject;
 			sourceTree = "<group>";
@@ -152,10 +167,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1A2697122B6A453005716B2 /* Particles in Resources */,
 				A11F8986229FA74500622555 /* mblogthumb1.phinf.naver.net.jpeg in Resources */,
 				A1929A0C228D344800C6734D /* LaunchScreen.storyboard in Resources */,
 				A1929A09228D344800C6734D /* Assets.xcassets in Resources */,
 				A1929A07228D344700C6734D /* Main.storyboard in Resources */,
+				A1A2696F22B6A43F005716B2 /* Audio in Resources */,
 				A11F8989229FA9B400622555 /* 51-514236_white-magnifying-glass-png-search-magnifying-glass-icon.png in Resources */,
 				A1DCAB7F22A44B8B001D8B33 /* star.png in Resources */,
 			);
@@ -168,12 +185,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1A2697422B6A464005716B2 /* AudioController.swift in Sources */,
 				A1A73106229EF4E9009A433E /* Region_SearchViewController.swift in Sources */,
 				A1929A04228D344700C6734D /* ViewController.swift in Sources */,
 				A1A73100229E8DB9009A433E /* R_ListTableViewController.swift in Sources */,
 				A1A2696D22B229C5005716B2 /* AppTheme.swift in Sources */,
+				A1A2697722B6A480005716B2 /* Config.swift in Sources */,
 				A1A73102229E8E95009A433E /* R_MapViewController.swift in Sources */,
 				A1A2696722B206D7005716B2 /* SearchFooter.swift in Sources */,
+				A1A2697522B6A464005716B2 /* ExplodeView.swift in Sources */,
 				A112456E229FC35100E872E3 /* R_InformationTableViewController.swift in Sources */,
 				A1929A02228D344700C6734D /* AppDelegate.swift in Sources */,
 				A1A73104229E8F57009A433E /* Restorant.swift in Sources */,

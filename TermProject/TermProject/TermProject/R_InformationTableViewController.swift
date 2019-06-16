@@ -16,9 +16,8 @@ class R_InformationTableViewController: UITableViewController {
     var rests = Restorant(resNm: "default", locationName: "default", coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0), resFd: "default", resOpDt: "default")
 
     override func viewDidLoad() {
-        loadInitialData()
         super.viewDidLoad()
-        
+        loadInitialData()
     }
     
     
@@ -27,6 +26,8 @@ class R_InformationTableViewController: UITableViewController {
         posts[1] = rests.locationName
         posts[2] = rests.resFd
         posts[3] = rests.resOpDt
+        
+        detailTableView.reloadData()
     }
     
     

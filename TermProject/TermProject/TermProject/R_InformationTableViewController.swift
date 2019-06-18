@@ -20,8 +20,9 @@ class R_InformationTableViewController: UITableViewController {
     func initialize(post : Restorant!)
     {
         resToMap = post
+        print(post.resFd)
         
-        var str = post.title as! NSString as String
+        var str = post.title! as NSString as String
         posts[0] = str
         str = post.locationName as NSString as String
         posts[1] = str
@@ -49,6 +50,12 @@ class R_InformationTableViewController: UITableViewController {
         if segue.identifier == "segueToMapView"{
             if let mapViewController = segue.destination as? R_MapViewController{
                 mapViewController.initializeLInformToMap(post: resToMap)
+            }
+        }
+        
+        if segue.identifier == "segueToBookMark"{
+            if let bookMarkViewController = segue.destination as? BookMarkTableViewController{
+                bookMarkViewController.rests.append(resToMap)
             }
         }
     }

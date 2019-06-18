@@ -64,7 +64,7 @@
                             </barButtonItem>
                             <barButtonItem title="북마크" image="star.png" id="WO3-KP-Osh">
                                 <connections>
-                                    <segue destination="2hE-Am-MBC" kind="show" id="F53-3o-o7u"/>
+                                    <segue destination="2hE-Am-MBC" kind="show" identifier="segueToBookMark" id="F53-3o-o7u"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -105,7 +105,7 @@
         <!--북마크-->
         <scene sceneID="1B5-xm-RHa">
             <objects>
-                <viewController title="북마크" id="2hE-Am-MBC" sceneMemberID="viewController">
+                <viewController title="북마크" id="2hE-Am-MBC" customClass="BookMarkTableViewController" customModule="TermProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="X9M-05-M48">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -115,7 +115,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="Q6D-Ob-m4x" detailTextLabel="fC3-Yd-Juh" style="IBUITableViewCellStyleSubtitle" id="Vh5-9S-GAk">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BookMarkCell" textLabel="Q6D-Ob-m4x" detailTextLabel="fC3-Yd-Juh" style="IBUITableViewCellStyleSubtitle" id="Vh5-9S-GAk">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Vh5-9S-GAk" id="TLC-sJ-YfE">
@@ -141,12 +141,19 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="2hE-Am-MBC" id="z6b-dQ-p6A"/>
+                                    <outlet property="delegate" destination="2hE-Am-MBC" id="n1M-cZ-bgq"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="8NJ-ni-RIv"/>
                     </view>
                     <navigationItem key="navigationItem" id="ynm-S2-IG7"/>
+                    <connections>
+                        <outlet property="bookMarkTableView" destination="U9I-l7-PqC" id="gIc-5P-h70"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6dR-jX-YkU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -362,6 +369,11 @@
                         <viewLayoutGuide key="safeArea" id="cnf-2w-fYu"/>
                     </view>
                     <navigationItem key="navigationItem" title="지역별 검색" id="9qO-qp-r8F">
+                        <barButtonItem key="leftBarButtonItem" title="Done" id="VvN-xx-YgL">
+                            <connections>
+                                <segue destination="b05-Yp-WY1" kind="show" id="15K-G8-xti"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="TBj-Jm-Aci">
                             <connections>
                                 <segue destination="FVH-Zq-UlI" kind="show" identifier="segueToRestorantList" id="wgq-Xb-UZn"/>
@@ -477,6 +489,7 @@
         <image name="star.png" width="27" height="27"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="15K-G8-xti"/>
         <segue reference="F53-3o-o7u"/>
         <segue reference="rbX-et-B7B"/>
         <segue reference="eIk-qa-OyN"/>

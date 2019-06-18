@@ -14,9 +14,11 @@ class R_ListTableViewController: UIViewController, XMLParserDelegate, UITableVie
     
     var posts = NSMutableArray()
     var filteredPosts = NSMutableArray()
-    var rests : [Restorant] = []
+    //var rests : [Restorant] = []
+    var rests = [Restorant]()
     var restName = NSString()
-    var filteredRests : [Restorant] = []
+    //var filteredRests : [Restorant] = []
+    var filteredRests = [Restorant]()
     let searchController = UISearchController(searchResultsController: nil)
     
     var lon : Double = 0
@@ -131,6 +133,7 @@ class R_ListTableViewController: UIViewController, XMLParserDelegate, UITableVie
             let LICENSG_DE = (post as AnyObject).value(forKey: "LICENSG_DE") as! NSString as String
             let restorant = Restorant(title: BIZPLC_NM, locationName: REFINE_LOTNO_ADDR, coordinate: CLLocationCoordinate2D(latitude: lat, longitude: lon), resFd: SANITTN_BIZCOND_NM, resOpDt: LICENSG_DE)
             rests.append(restorant)
+            //print(rests[0].resFd)
         }
     }
     
@@ -138,6 +141,7 @@ class R_ListTableViewController: UIViewController, XMLParserDelegate, UITableVie
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isFiltering() {
             searchFooter.setIsFilteringToShow(filteredItemCount: filteredRests.count, of: rests.count)
+            //print(filteredRests)
             return filteredRests.count
         }
             
@@ -173,7 +177,6 @@ class R_ListTableViewController: UIViewController, XMLParserDelegate, UITableVie
                         informationTableViewController.initialize(post: filteredRests[(indexPath?.row)!])
                     }
                     else {
-                        //informationTableViewController.initialize(post: posts.object(at: (indexPath?.row)!)as AnyObject)
                         informationTableViewController.initialize(post: rests[(indexPath?.row)!])
                     }
                 }
@@ -196,10 +199,10 @@ class R_ListTableViewController: UIViewController, XMLParserDelegate, UITableVie
         return searchController.searchBar.text?.isEmpty ?? true
     }
     
-    func filterContentForSearchText(_ searchText: String, scope: String = "All") {
+    func filterContentForSearchText(_ searchText: String, scope: String = "All")
+    {
         filteredRests = rests.filter({( restorant : Restorant) -> Bool in
-            let doesCategoryMatch = (scope == "All") || (restorant.resFd == scope)
-            
+            let doesCategoryMatch = (scope == "All") || (restorant.resFd.lowercased().contains(scope))
             if searchBarIsEmpty() {
                 return doesCategoryMatch
             }
@@ -207,6 +210,7 @@ class R_ListTableViewController: UIViewController, XMLParserDelegate, UITableVie
                 return doesCategoryMatch && restorant.title!.lowercased().contains(searchText.lowercased())
             }
         })
+        
         tbData.reloadData()
     }
     
@@ -232,7 +236,7 @@ class R_ListTableViewController: UIViewController, XMLParserDelegate, UITableVie
         tbData.tableFooterView = searchFooter
         
         loadInitialData()
-
+        
     }
 }
 

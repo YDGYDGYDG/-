@@ -20,7 +20,6 @@ class R_InformationTableViewController: UITableViewController {
     func initialize(post : Restorant!)
     {
         resToMap = post
-        print(post.resFd)
         
         var str = post.title! as NSString as String
         posts[0] = str

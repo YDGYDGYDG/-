@@ -13,11 +13,7 @@ class R_ListTableViewController: UIViewController, XMLParserDelegate, UITableVie
     var parser = XMLParser()
     
     var posts = NSMutableArray()
-    var filteredPosts = NSMutableArray()
-    //var rests : [Restorant] = []
     var rests = [Restorant]()
-    var restName = NSString()
-    //var filteredRests : [Restorant] = []
     var filteredRests = [Restorant]()
     let searchController = UISearchController(searchResultsController: nil)
     
@@ -133,7 +129,6 @@ class R_ListTableViewController: UIViewController, XMLParserDelegate, UITableVie
             let LICENSG_DE = (post as AnyObject).value(forKey: "LICENSG_DE") as! NSString as String
             let restorant = Restorant(title: BIZPLC_NM, locationName: REFINE_LOTNO_ADDR, coordinate: CLLocationCoordinate2D(latitude: lat, longitude: lon), resFd: SANITTN_BIZCOND_NM, resOpDt: LICENSG_DE)
             rests.append(restorant)
-            //print(rests[0].resFd)
         }
     }
     
@@ -141,7 +136,6 @@ class R_ListTableViewController: UIViewController, XMLParserDelegate, UITableVie
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isFiltering() {
             searchFooter.setIsFilteringToShow(filteredItemCount: filteredRests.count, of: rests.count)
-            //print(filteredRests)
             return filteredRests.count
         }
             

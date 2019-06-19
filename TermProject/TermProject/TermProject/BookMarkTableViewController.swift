@@ -13,7 +13,7 @@ class BookMarkTableViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let list : Array<String> = self.fvo.config.object(forKey: "favoriteArray") as! Array<String>
+        let list : Array<Restorant> = self.fvo.config.object(forKey: "favoriteArray") as! Array<Restorant>
         
         return list.count
         

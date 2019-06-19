@@ -76,7 +76,7 @@ class R_InformationTableViewController: UITableViewController {
         
         alert.addAction(UIAlertAction(title: "추가", style: .default, handler: { (action) -> Void in
             
-            var list : Array<String> = self.fvo.config.object(forKey: "favoriteArray") as! Array<String>
+            var list : Array<Restorant> = self.fvo.config.object(forKey: "favoriteArray") as! Array<Restorant>
             list.append(self.resToMap.title!)
             
             self.fvo.config.set(list, forKey: "favoriteArray")

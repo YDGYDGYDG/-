@@ -27,6 +27,7 @@
 		A1A73104229E8F57009A433E /* Restorant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A73103229E8F57009A433E /* Restorant.swift */; };
 		A1A73106229EF4E9009A433E /* Region_SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A73105229EF4E9009A433E /* Region_SearchViewController.swift */; };
 		A1B0ED7A22B70DBC00401427 /* BookMarkTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B0ED7922B70DBC00401427 /* BookMarkTableViewController.swift */; };
+		A1B0ED7C22BABBE900401427 /* StardustView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B0ED7B22BABBE900401427 /* StardustView.swift */; };
 		A1DCAB7F22A44B8B001D8B33 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = A1DCAB7D22A44B8B001D8B33 /* star.png */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,7 @@
 		A1A73103229E8F57009A433E /* Restorant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restorant.swift; sourceTree = "<group>"; };
 		A1A73105229EF4E9009A433E /* Region_SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Region_SearchViewController.swift; sourceTree = "<group>"; };
 		A1B0ED7922B70DBC00401427 /* BookMarkTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkTableViewController.swift; sourceTree = "<group>"; };
+		A1B0ED7B22BABBE900401427 /* StardustView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StardustView.swift; sourceTree = "<group>"; };
 		A1DCAB7E22A44B8B001D8B33 /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = Base.lproj/star.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,6 +108,7 @@
 				A1A2697622B6A480005716B2 /* Config.swift */,
 				A1A2697222B6A464005716B2 /* AudioController.swift */,
 				A1A2697322B6A464005716B2 /* ExplodeView.swift */,
+				A1B0ED7B22BABBE900401427 /* StardustView.swift */,
 				A1A2697022B6A452005716B2 /* Particles */,
 				A1A2696E22B6A43F005716B2 /* Audio */,
 			);
@@ -196,6 +199,7 @@
 				A1A2697722B6A480005716B2 /* Config.swift in Sources */,
 				A1A73102229E8E95009A433E /* R_MapViewController.swift in Sources */,
 				A1A2696722B206D7005716B2 /* SearchFooter.swift in Sources */,
+				A1B0ED7C22BABBE900401427 /* StardustView.swift in Sources */,
 				A1A2697522B6A464005716B2 /* ExplodeView.swift in Sources */,
 				A112456E229FC35100E872E3 /* R_InformationTableViewController.swift in Sources */,
 				A1B0ED7A22B70DBC00401427 /* BookMarkTableViewController.swift in Sources */,

@@ -4,6 +4,8 @@ import MapKit
 
 class R_InformationTableViewController: UITableViewController {
     
+    var fvo = Favorite()
+    
     @IBOutlet var detailTableView: UITableView!
     
     @IBAction func doneToPickerViewController(segue:UIStoryboardSegue){
@@ -58,7 +60,34 @@ class R_InformationTableViewController: UITableViewController {
         if segue.identifier == "segueToBookMark"{
             if let bookMarkViewController = segue.destination as? BookMarkTableViewController{
                 bookMarkViewController.rests.append(resToMap)
+                bookMarkViewController.fvo = fvo
+
             }
         }
     }
+    
+    
+    // 즐겨찾기 추가 버튼(알림창을 통한 추가)
+    @IBAction func addFavoriteBtn(sender: AnyObject) {
+        
+        let alert = UIAlertController(title: nil, message: "즐겨찾기 추가", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "취소", style: .default, handler: nil))
+        
+        alert.addAction(UIAlertAction(title: "추가", style: .default, handler: { (action) -> Void in
+            
+            var list : Array<String> = self.fvo.config.object(forKey: "favoriteArray") as! Array<String>
+            list.append(self.resToMap.title!)
+            
+            self.fvo.config.set(list, forKey: "favoriteArray")
+            
+            self.tableView.reloadData()
+            
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+        
+    }
+    
+    
 }

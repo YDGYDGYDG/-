@@ -9,6 +9,11 @@
 import Foundation
 import UIKit
 
+// 저장
+class Favorite {
+    let config = UserDefaults.standard
+}
+
 //UI Constants
 let ScreenWidth = UIScreen.main.bounds.size.width
 let ScreenHeight = UIScreen.main.bounds.size.height

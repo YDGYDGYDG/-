@@ -64,7 +64,7 @@
                             </barButtonItem>
                             <barButtonItem title="북마크" image="star.png" id="WO3-KP-Osh">
                                 <connections>
-                                    <segue destination="2hE-Am-MBC" kind="show" identifier="segueToBookMark" id="F53-3o-o7u"/>
+                                    <action selector="addFavoriteBtnWithSender:" destination="GqF-Bd-LWf" id="4Q3-XR-GXr"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -155,6 +155,9 @@
                         <viewLayoutGuide key="safeArea" id="8NJ-ni-RIv"/>
                     </view>
                     <navigationItem key="navigationItem" title="북마크" id="ynm-S2-IG7"/>
+                    <connections>
+                        <outlet property="tbData" destination="U9I-l7-PqC" id="qEX-An-wnF"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="4796" y="-401"/>
@@ -245,7 +248,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PuK-ZU-t55">
-                                <rect key="frame" x="140" y="268.5" width="95" height="30"/>
+                                <rect key="frame" x="109" y="262.5" width="157" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="지역명으로 검색"/>
                                 <connections>
                                     <segue destination="35A-Ah-Sic" kind="show" identifier="" id="7r4-iQ-4Rd"/>
@@ -277,9 +281,13 @@
                                 <rect key="frame" x="16" y="48" width="343" height="368"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jyn-d5-ult">
-                                <rect key="frame" x="172.5" y="468.5" width="30" height="30"/>
-                                <state key="normal" title="시작"/>
+                                <rect key="frame" x="157" y="456.5" width="61" height="54"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                                <state key="normal" title="시작">
+                                    <color key="titleColor" red="1" green="0.1748579502" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
+                                    <action selector="ActionStart:" destination="mRP-qW-hxG" eventType="touchUpInside" id="R5E-nl-uR0"/>
                                     <segue destination="b05-Yp-WY1" kind="show" id="5E7-xo-bZM"/>
                                 </connections>
                             </button>
@@ -295,6 +303,7 @@
                     </view>
                     <connections>
                         <outlet property="TileImage" destination="L9B-hL-GpC" id="NCe-kg-Z5p"/>
+                        <outlet property="startButton" destination="jyn-d5-ult" id="yFe-wT-j7v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1pB-1d-pFc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -305,7 +314,7 @@
         <scene sceneID="JuG-9B-iLl">
             <objects>
                 <tabBarController id="b05-Yp-WY1" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="sEn-H5-meR">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="sEn-H5-meR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -371,7 +380,7 @@
                     <navigationItem key="navigationItem" title="지역별 검색" id="9qO-qp-r8F">
                         <barButtonItem key="leftBarButtonItem" title="Done" id="VvN-xx-YgL">
                             <connections>
-                                <segue destination="Jaj-sw-MjJ" kind="unwind" unwindAction="doneToPickerViewControllerWithSegue:" id="5nU-Jy-xuT"/>
+                                <segue destination="mY0-fQ-Mbo" kind="show" id="GUH-bZ-6SM"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="TBj-Jm-Aci">
@@ -388,7 +397,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R8v-K1-XTM" sceneMemberID="firstResponder"/>
-                <exit id="Jaj-sw-MjJ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1334" y="-2128"/>
         </scene>
@@ -532,11 +540,7 @@
                         </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem title="지도표시" id="s43-6n-JYf"/>
-                            <barButtonItem title="북마크" image="star.png" id="04v-CT-Eyt">
-                                <connections>
-                                    <segue destination="2hE-Am-MBC" kind="show" id="Hm5-MR-eCr"/>
-                                </connections>
-                            </barButtonItem>
+                            <barButtonItem title="북마크" image="star.png" id="04v-CT-Eyt"/>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
@@ -554,8 +558,7 @@
         <image name="star.png" width="27" height="27"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lh2-Sk-9Cy"/>
-        <segue reference="Hm5-MR-eCr"/>
+        <segue reference="GEh-T3-dZM"/>
         <segue reference="rbX-et-B7B"/>
         <segue reference="eIk-qa-OyN"/>
     </inferredMetricsTieBreakers>

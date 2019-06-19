@@ -1,8 +1,14 @@
-
+//
+//  StardustView.swift
+//  Anagrams
+//
+//  Created by kpugame on 2019. 5. 23..
+//  Copyright © 2019년 Caroline. All rights reserved.
+//
 
 import UIKit
 
-class ExplodeView: UIView {
+class StardustView : UIView {
     private var emitter: CAEmitterLayer!
     
     override class var layerClass: AnyClass{
@@ -34,11 +40,14 @@ class ExplodeView: UIView {
         
         emitterCell.name = "cell"
         emitterCell.contents = texture?.cgImage
-        emitterCell.birthRate = 200
-        emitterCell.lifetime = 0.75
-        emitterCell.greenRange = 0.99
-        emitterCell.greenSpeed = -0.99
-        emitterCell.velocity = 160
+        emitterCell.birthRate = 25
+        emitterCell.lifetime = 7
+        emitterCell.lifetimeRange = 3
+        emitterCell.redRange = 0.99
+        emitterCell.redSpeed = -0.99
+        emitterCell.xAcceleration = 0
+        emitterCell.yAcceleration = 100
+        emitterCell.velocity = 100
         emitterCell.velocityRange = 40
         emitterCell.scaleRange = 0.5
         emitterCell.scaleSpeed = -0.2

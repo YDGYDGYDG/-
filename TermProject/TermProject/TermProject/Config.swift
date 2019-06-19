@@ -15,9 +15,9 @@ let ScreenHeight = UIScreen.main.bounds.size.height
 
 let TileMargin : CGFloat = 20
 
-let soundDing = "Assets/Audio/ding.mp3"
-let soundWrong = "Assets/Audio/wrong.m4a"
-let soundWin = "Assets/Audio/win.mp3"
+let soundDing = "Audio/ding.mp3"
+let soundWrong = "Audio/wrong.m4a"
+let soundWin = "Audio/win.mp3"
 let AudioEffectFiles = [soundDing, soundWrong, soundWin]
 
 

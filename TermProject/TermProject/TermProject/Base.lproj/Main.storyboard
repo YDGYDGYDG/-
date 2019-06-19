@@ -105,6 +105,7 @@
         <!--북마크-->
         <scene sceneID="1B5-xm-RHa">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6dR-jX-YkU" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController title="북마크" id="2hE-Am-MBC" customClass="BookMarkTableViewController" customModule="TermProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="X9M-05-M48">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -151,11 +152,7 @@
                         <viewLayoutGuide key="safeArea" id="8NJ-ni-RIv"/>
                     </view>
                     <navigationItem key="navigationItem" id="ynm-S2-IG7"/>
-                    <connections>
-                        <outlet property="bookMarkTableView" destination="U9I-l7-PqC" id="gIc-5P-h70"/>
-                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6dR-jX-YkU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4796" y="-401"/>
         </scene>
@@ -430,6 +427,7 @@
         <!--북마크-->
         <scene sceneID="JiD-1A-4Bb">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ta0-WR-cNf" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ucp-9s-shl" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="북마크" image="star.png" id="fnl-Nl-IND"/>
                     <toolbarItems/>
@@ -442,7 +440,6 @@
                         <segue destination="2hE-Am-MBC" kind="relationship" relationship="rootViewController" id="iV1-ii-Ecr"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ta0-WR-cNf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4078" y="-402"/>
         </scene>

@@ -5,6 +5,15 @@ import Speech
 
 class Region_SearchViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
+    //========================================================================
+    // 오디오
+    var audioController: AudioController
+    required init?(coder aDecoder: NSCoder) {
+        audioController = AudioController()
+        audioController.preloadAudioEffect(audioFileNames: AudioEffectFiles)
+        
+        super.init(coder: aDecoder)
+    }
     
     //========================================================================
     
@@ -163,6 +172,7 @@ class Region_SearchViewController: UIViewController, UIPickerViewDelegate, UIPic
             SIGUN_NM = "\(SIGUN_NMList[0])"
             break;
         }
+        audioController.playerEffect(name: soundDing)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -257,96 +267,127 @@ class Region_SearchViewController: UIViewController, UIPickerViewDelegate, UIPic
         switch(self.myTextView.text){
         case "가평군": self.pickerView.selectRow(0, inComponent: 0, animated: true)
             SIGUN_NM = "가평군"
+        audioController.playerEffect(name: soundDing)
             break
         case "과천시": self.pickerView.selectRow(1, inComponent: 0, animated: true)
             SIGUN_NM = "과천시"
+        audioController.playerEffect(name: soundDing)
             break
         case "광명시": self.pickerView.selectRow(2, inComponent: 0, animated: true)
             SIGUN_NM = "광명시"
+        audioController.playerEffect(name: soundDing)
             break
         case "광주시": self.pickerView.selectRow(3, inComponent: 0, animated: true)
             SIGUN_NM = "광주시"
+        audioController.playerEffect(name: soundDing)
             break
         case "고양시": self.pickerView.selectRow(4, inComponent: 0, animated: true)
             SIGUN_NM = "고양시"
+        audioController.playerEffect(name: soundDing)
             break
         case "구리시": self.pickerView.selectRow(5, inComponent: 0, animated: true)
             SIGUN_NM = "구리시"
+        audioController.playerEffect(name: soundDing)
             break
         case "군포시": self.pickerView.selectRow(6, inComponent: 0, animated: true)
             SIGUN_NM = "군포시"
+        audioController.playerEffect(name: soundDing)
             break
         case "김포시": self.pickerView.selectRow(7, inComponent: 0, animated: true)
             SIGUN_NM = "김포시"
+        audioController.playerEffect(name: soundDing)
             break
         case "남양주시": self.pickerView.selectRow(8, inComponent: 0, animated: true)
             SIGUN_NM = "남양주시"
+        audioController.playerEffect(name: soundDing)
             break
         case "동두천시": self.pickerView.selectRow(9, inComponent: 0, animated: true)
             SIGUN_NM = "동두천시"
+        audioController.playerEffect(name: soundDing)
             break
         case "부천시": self.pickerView.selectRow(10, inComponent: 0, animated: true)
             SIGUN_NM = "부천시"
+        audioController.playerEffect(name: soundDing)
             break
         case "성남시": self.pickerView.selectRow(11, inComponent: 0, animated: true)
             SIGUN_NM = "성남시"
+        audioController.playerEffect(name: soundDing)
             break
         case "수원시": self.pickerView.selectRow(12, inComponent: 0, animated: true)
             SIGUN_NM = "수원시"
+        audioController.playerEffect(name: soundDing)
             break
         case "시흥시": self.pickerView.selectRow(13, inComponent: 0, animated: true)
             SIGUN_NM = "시흥시"
+        audioController.playerEffect(name: soundDing)
             break
         case "안산시": self.pickerView.selectRow(14, inComponent: 0, animated: true)
             SIGUN_NM = "안산시"
+        audioController.playerEffect(name: soundDing)
             break
         case "안성시": self.pickerView.selectRow(15, inComponent: 0, animated: true)
             SIGUN_NM = "안성시"
+        audioController.playerEffect(name: soundDing)
             break
         case "안양시": self.pickerView.selectRow(16, inComponent: 0, animated: true)
             SIGUN_NM = "안양시"
+        audioController.playerEffect(name: soundDing)
             break
         case "양주시": self.pickerView.selectRow(17, inComponent: 0, animated: true)
             SIGUN_NM = "양주시"
+        audioController.playerEffect(name: soundDing)
             break
         case "양평군": self.pickerView.selectRow(18, inComponent: 0, animated: true)
             SIGUN_NM = "양평군"
+        audioController.playerEffect(name: soundDing)
             break
         case "여주군": self.pickerView.selectRow(19, inComponent: 0, animated: true)
             SIGUN_NM = "여주군"
+        audioController.playerEffect(name: soundDing)
             break
         case "연천군": self.pickerView.selectRow(20, inComponent: 0, animated: true)
             SIGUN_NM = "연천군"
+        audioController.playerEffect(name: soundDing)
             break
         case "오산시": self.pickerView.selectRow(21, inComponent: 0, animated: true)
             SIGUN_NM = "오산시"
+        audioController.playerEffect(name: soundDing)
             break
         case "용인시": self.pickerView.selectRow(22, inComponent: 0, animated: true)
             SIGUN_NM = "용인시"
+        audioController.playerEffect(name: soundDing)
             break
         case "의왕군": self.pickerView.selectRow(23, inComponent: 0, animated: true)
             SIGUN_NM = "의왕군"
+        audioController.playerEffect(name: soundDing)
             break
         case "의정부시": self.pickerView.selectRow(24, inComponent: 0, animated: true)
             SIGUN_NM = "의정부시"
+        audioController.playerEffect(name: soundDing)
             break
         case "이천시": self.pickerView.selectRow(25, inComponent: 0, animated: true)
             SIGUN_NM = "이천시"
+        audioController.playerEffect(name: soundDing)
             break
         case "파주시": self.pickerView.selectRow(26, inComponent: 0, animated: true)
             SIGUN_NM = "파주시"
+        audioController.playerEffect(name: soundDing)
             break
         case "평택시": self.pickerView.selectRow(27, inComponent: 0, animated: true)
             SIGUN_NM = "평택시"
+        audioController.playerEffect(name: soundDing)
             break
         case "포천시": self.pickerView.selectRow(28, inComponent: 0, animated: true)
             SIGUN_NM = "포천시"
+            audioController.playerEffect(name: soundDing)
             break
         case "하남시": self.pickerView.selectRow(29, inComponent: 0, animated: true)
             SIGUN_NM = "하남시"
+            audioController.playerEffect(name: soundDing)
             break
         case "화성시": self.pickerView.selectRow(30, inComponent: 0, animated: true)
             SIGUN_NM = "화성시"
+            audioController.playerEffect(name: soundDing)
             break
         default: break
         }

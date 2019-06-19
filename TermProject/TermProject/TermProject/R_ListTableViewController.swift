@@ -3,7 +3,19 @@ import UIKit
 import MapKit
 
 class R_ListTableViewController: UIViewController, XMLParserDelegate, UITableViewDataSource, UITableViewDelegate {
-
+    
+    //========================================================================
+    // 오디오
+    var audioController: AudioController
+    required init?(coder aDecoder: NSCoder) {
+        audioController = AudioController()
+        audioController.preloadAudioEffect(audioFileNames: AudioEffectFiles)
+        
+        super.init(coder: aDecoder)
+    }
+    
+    //========================================================================
+    
     @IBOutlet var tbData: UITableView!
     @IBOutlet weak var searchFooter: SearchFooter!
     

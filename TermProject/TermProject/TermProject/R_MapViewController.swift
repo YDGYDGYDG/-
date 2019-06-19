@@ -5,7 +5,10 @@ import MapKit
 class R_MapViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
-    
+     
+     @IBAction func doneToPickerViewController(segue:UIStoryboardSegue){
+     }
+     
     var lon : Double = 0
     var lat : Double = 0
     

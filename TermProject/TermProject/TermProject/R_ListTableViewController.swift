@@ -48,6 +48,8 @@ class R_ListTableViewController: UIViewController, XMLParserDelegate, UITableVie
     // 오픈일
     var LICENSG_DE = NSMutableString()
 
+    @IBAction func doneToPickerViewController(segue:UIStoryboardSegue){
+    }
     
     func beginParsing(){
         posts = []

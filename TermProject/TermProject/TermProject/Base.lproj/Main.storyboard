@@ -13,7 +13,7 @@
         <!--음식점 정보-->
         <scene sceneID="Hoj-Jm-4yT">
             <objects>
-                <tableViewController storyboardIdentifier="ResInformTVC" title="음식점 정보" id="GqF-Bd-LWf" customClass="R_InformationTableViewController" customModule="TermProject" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="음식점 정보" id="GqF-Bd-LWf" customClass="R_InformationTableViewController" customModule="TermProject" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="OqB-PK-dG3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -53,7 +53,7 @@
                     <navigationItem key="navigationItem" title="음식점 정보" id="eWO-Mf-jrT">
                         <barButtonItem key="leftBarButtonItem" systemItem="done" id="fBt-zx-250">
                             <connections>
-                                <segue destination="ZnI-Sc-Q4h" kind="unwind" unwindAction="doneToPickerViewControllerWithSegue:" id="2yb-nd-qzL"/>
+                                <segue destination="ZnI-Sc-Q4h" kind="unwind" unwindAction="doneToPickerViewControllerWithSegue:" id="BwS-CD-xMW"/>
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
@@ -76,7 +76,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r2N-md-HMu" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="ZnI-Sc-Q4h" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5135" y="-2131"/>
+            <point key="canvasLocation" x="5172" y="-2125"/>
         </scene>
         <!--음식점 지도 위치-->
         <scene sceneID="IB0-nj-Ihy">
@@ -139,6 +139,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="fRe-Ka-mIZ" kind="show" identifier="segueToBookMarkedInform" id="lh2-Sk-9Cy"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
@@ -151,7 +154,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="8NJ-ni-RIv"/>
                     </view>
-                    <navigationItem key="navigationItem" id="ynm-S2-IG7"/>
+                    <navigationItem key="navigationItem" title="북마크" id="ynm-S2-IG7"/>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="4796" y="-401"/>
@@ -214,7 +217,7 @@
                     <navigationItem key="navigationItem" title="음식점 리스트" id="p5U-i7-hvE">
                         <barButtonItem key="leftBarButtonItem" systemItem="done" id="Nbw-kL-SVp">
                             <connections>
-                                <segue destination="7FJ-xw-gPz" kind="unwind" unwindAction="doneToPickerViewControllerWithSegue:" id="c5f-wQ-VWj"/>
+                                <segue destination="7FJ-xw-gPz" kind="unwind" unwindAction="doneToPickerViewControllerWithSegue:" id="fsL-TD-K1h"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="지도표시" id="hrY-wp-Ar8">
@@ -368,7 +371,7 @@
                     <navigationItem key="navigationItem" title="지역별 검색" id="9qO-qp-r8F">
                         <barButtonItem key="leftBarButtonItem" title="Done" id="VvN-xx-YgL">
                             <connections>
-                                <segue destination="b05-Yp-WY1" kind="show" id="15K-G8-xti"/>
+                                <segue destination="Jaj-sw-MjJ" kind="unwind" unwindAction="doneToPickerViewControllerWithSegue:" id="5nU-Jy-xuT"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="TBj-Jm-Aci">
@@ -385,6 +388,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R8v-K1-XTM" sceneMemberID="firstResponder"/>
+                <exit id="Jaj-sw-MjJ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1334" y="-2128"/>
         </scene>
@@ -480,14 +484,78 @@
             </objects>
             <point key="canvasLocation" x="2630" y="-2129"/>
         </scene>
+        <!--북마크된 음식점 정보-->
+        <scene sceneID="ero-fe-BHU">
+            <objects>
+                <tableViewController title="북마크된 음식점 정보" id="fRe-Ka-mIZ" customClass="R_InformationTableViewController" customModule="TermProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Qpm-rl-Akv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RestorantCell" textLabel="X39-be-5Vh" detailTextLabel="78F-NB-Ga5" style="IBUITableViewCellStyleSubtitle" id="Zp0-wB-sRS">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Zp0-wB-sRS" id="JKR-Nb-c4p">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="X39-be-5Vh">
+                                            <rect key="frame" x="16" y="2" width="25" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="78F-NB-Ga5">
+                                            <rect key="frame" x="16" y="18.5" width="62" height="21.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="fRe-Ka-mIZ" id="xH9-K8-AF0"/>
+                            <outlet property="delegate" destination="fRe-Ka-mIZ" id="nKv-4l-Eiu"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="음식점 정보" id="iCI-Pf-G6E">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="oRw-Z3-QuG">
+                            <connections>
+                                <segue destination="NaZ-Ke-pqc" kind="unwind" unwindAction="doneToPickerViewControllerWithSegue:" id="w2Z-oD-s2L"/>
+                            </connections>
+                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="지도표시" id="s43-6n-JYf"/>
+                            <barButtonItem title="북마크" image="star.png" id="04v-CT-Eyt">
+                                <connections>
+                                    <segue destination="2hE-Am-MBC" kind="show" id="Hm5-MR-eCr"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="detailTableView" destination="Qpm-rl-Akv" id="1fB-pP-ZZG"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6WP-zd-eTr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="NaZ-Ke-pqc" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="5865" y="-403"/>
+        </scene>
     </scenes>
     <resources>
         <image name="51-514236_white-magnifying-glass-png-search-magnifying-glass-icon.png" width="27" height="27"/>
         <image name="star.png" width="27" height="27"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="15K-G8-xti"/>
-        <segue reference="F53-3o-o7u"/>
+        <segue reference="lh2-Sk-9Cy"/>
+        <segue reference="Hm5-MR-eCr"/>
         <segue reference="rbX-et-B7B"/>
         <segue reference="eIk-qa-OyN"/>
     </inferredMetricsTieBreakers>

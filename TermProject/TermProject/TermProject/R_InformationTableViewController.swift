@@ -6,6 +6,9 @@ class R_InformationTableViewController: UITableViewController {
     
     @IBOutlet var detailTableView: UITableView!
     
+    @IBAction func doneToPickerViewController(segue:UIStoryboardSegue){
+    }
+    
     let postsname : [String] = ["업소명", "주소(지번)", "업종", "개업일"]
     var posts : [String] = ["","","",""]
     var parameters : [String] =
